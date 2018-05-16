@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8204E26720AC45100086BA54 /* MenuPopularDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8204E26620AC45100086BA54 /* MenuPopularDetail.swift */; };
+		8204E26920AC45420086BA54 /* MenuFromLikeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8204E26820AC45420086BA54 /* MenuFromLikeDetail.swift */; };
+		8204E26B20AC47040086BA54 /* MenuFavouriteDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8204E26A20AC47040086BA54 /* MenuFavouriteDetail.swift */; };
+		8204E26D20AC475F0086BA54 /* CalenderDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8204E26C20AC475F0086BA54 /* CalenderDetail.swift */; };
+		8204E26F20AC48570086BA54 /* LogInScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8204E26E20AC48570086BA54 /* LogInScreen.swift */; };
+		8204E27120AC48990086BA54 /* LogInGmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8204E27020AC48990086BA54 /* LogInGmail.swift */; };
+		8204E27320AC48AA0086BA54 /* LogInFacebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8204E27220AC48AA0086BA54 /* LogInFacebook.swift */; };
+		8204E27520AC49550086BA54 /* InsertMyMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8204E27420AC49550086BA54 /* InsertMyMenu.swift */; };
+		8204E27720AC498E0086BA54 /* EditMyMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8204E27620AC498E0086BA54 /* EditMyMenu.swift */; };
+		8204E27920AC49CB0086BA54 /* MyMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8204E27820AC49CB0086BA54 /* MyMenu.swift */; };
 		82F470FA20AA9C9D002E148E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F470F920AA9C9D002E148E /* AppDelegate.swift */; };
 		82F470FC20AA9C9D002E148E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F470FB20AA9C9D002E148E /* ViewController.swift */; };
 		82F470FF20AA9C9D002E148E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82F470FD20AA9C9D002E148E /* Main.storyboard */; };
@@ -45,6 +55,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8204E26620AC45100086BA54 /* MenuPopularDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPopularDetail.swift; sourceTree = "<group>"; };
+		8204E26820AC45420086BA54 /* MenuFromLikeDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFromLikeDetail.swift; sourceTree = "<group>"; };
+		8204E26A20AC47040086BA54 /* MenuFavouriteDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFavouriteDetail.swift; sourceTree = "<group>"; };
+		8204E26C20AC475F0086BA54 /* CalenderDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderDetail.swift; sourceTree = "<group>"; };
+		8204E26E20AC48570086BA54 /* LogInScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInScreen.swift; sourceTree = "<group>"; };
+		8204E27020AC48990086BA54 /* LogInGmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInGmail.swift; sourceTree = "<group>"; };
+		8204E27220AC48AA0086BA54 /* LogInFacebook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInFacebook.swift; sourceTree = "<group>"; };
+		8204E27420AC49550086BA54 /* InsertMyMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertMyMenu.swift; sourceTree = "<group>"; };
+		8204E27620AC498E0086BA54 /* EditMyMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMyMenu.swift; sourceTree = "<group>"; };
+		8204E27820AC49CB0086BA54 /* MyMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMenu.swift; sourceTree = "<group>"; };
 		82F470F620AA9C9D002E148E /* Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82F470F920AA9C9D002E148E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82F470FB20AA9C9D002E148E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -127,10 +147,20 @@
 				82F4713120AAB0DD002E148E /* MenuCell.swift */,
 				82F4712B20AAA14B002E148E /* HomeController.swift */,
 				82F4713D20AAD98E002E148E /* MenuPopularScreen.swift */,
+				8204E26620AC45100086BA54 /* MenuPopularDetail.swift */,
 				82F4713F20AAE0D1002E148E /* MenuFromLikeScreen.swift */,
+				8204E26820AC45420086BA54 /* MenuFromLikeDetail.swift */,
 				82F4714320AAE4A4002E148E /* InsertMenuScreen.swift */,
+				8204E26E20AC48570086BA54 /* LogInScreen.swift */,
+				8204E27020AC48990086BA54 /* LogInGmail.swift */,
+				8204E27220AC48AA0086BA54 /* LogInFacebook.swift */,
+				8204E27820AC49CB0086BA54 /* MyMenu.swift */,
+				8204E27620AC498E0086BA54 /* EditMyMenu.swift */,
+				8204E27420AC49550086BA54 /* InsertMyMenu.swift */,
 				82F4714520AAE513002E148E /* MenuFavouriteScreen.swift */,
+				8204E26A20AC47040086BA54 /* MenuFavouriteDetail.swift */,
 				82F4714720AAE53D002E148E /* CalenderScreen.swift */,
+				8204E26C20AC475F0086BA54 /* CalenderDetail.swift */,
 				82F4714120AAE36C002E148E /* LogOutScreen.swift */,
 				82F4713920AAC396002E148E /* BaseMenuController.swift */,
 				82F470FD20AA9C9D002E148E /* Main.storyboard */,
@@ -297,19 +327,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8204E27920AC49CB0086BA54 /* MyMenu.swift in Sources */,
 				82F4714420AAE4A4002E148E /* InsertMenuScreen.swift in Sources */,
+				8204E26F20AC48570086BA54 /* LogInScreen.swift in Sources */,
+				8204E27120AC48990086BA54 /* LogInGmail.swift in Sources */,
+				8204E26B20AC47040086BA54 /* MenuFavouriteDetail.swift in Sources */,
 				82F4714820AAE53D002E148E /* CalenderScreen.swift in Sources */,
 				82F4712E20AAA15F002E148E /* MenuController.swift in Sources */,
 				82F4714620AAE513002E148E /* MenuFavouriteScreen.swift in Sources */,
 				82F4714220AAE36D002E148E /* LogOutScreen.swift in Sources */,
 				82F4714020AAE0D1002E148E /* MenuFromLikeScreen.swift in Sources */,
+				8204E27320AC48AA0086BA54 /* LogInFacebook.swift in Sources */,
 				82F4712C20AAA14B002E148E /* HomeController.swift in Sources */,
+				8204E26920AC45420086BA54 /* MenuFromLikeDetail.swift in Sources */,
 				82F4713A20AAC396002E148E /* BaseMenuController.swift in Sources */,
 				82F4713220AAB0DD002E148E /* MenuCell.swift in Sources */,
+				8204E27720AC498E0086BA54 /* EditMyMenu.swift in Sources */,
+				8204E26D20AC475F0086BA54 /* CalenderDetail.swift in Sources */,
 				82F470FC20AA9C9D002E148E /* ViewController.swift in Sources */,
 				82F4713E20AAD98E002E148E /* MenuPopularScreen.swift in Sources */,
+				8204E26720AC45100086BA54 /* MenuPopularDetail.swift in Sources */,
 				82F470FA20AA9C9D002E148E /* AppDelegate.swift in Sources */,
 				82F4712A20AA9D28002E148E /* SWRevealViewController.m in Sources */,
+				8204E27520AC49550086BA54 /* InsertMyMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
