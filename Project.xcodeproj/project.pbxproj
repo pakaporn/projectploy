@@ -14,6 +14,17 @@
 		82F4710420AA9C9D002E148E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82F4710220AA9C9D002E148E /* LaunchScreen.storyboard */; };
 		82F4710F20AA9C9D002E148E /* ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F4710E20AA9C9D002E148E /* ProjectTests.swift */; };
 		82F4711A20AA9C9E002E148E /* ProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F4711920AA9C9E002E148E /* ProjectUITests.swift */; };
+		82F4712A20AA9D28002E148E /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F4712820AA9D27002E148E /* SWRevealViewController.m */; };
+		82F4712C20AAA14B002E148E /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F4712B20AAA14B002E148E /* HomeController.swift */; };
+		82F4712E20AAA15F002E148E /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F4712D20AAA15F002E148E /* MenuController.swift */; };
+		82F4713220AAB0DD002E148E /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F4713120AAB0DD002E148E /* MenuCell.swift */; };
+		82F4713A20AAC396002E148E /* BaseMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F4713920AAC396002E148E /* BaseMenuController.swift */; };
+		82F4713E20AAD98E002E148E /* MenuPopularScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F4713D20AAD98E002E148E /* MenuPopularScreen.swift */; };
+		82F4714020AAE0D1002E148E /* MenuFromLikeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F4713F20AAE0D1002E148E /* MenuFromLikeScreen.swift */; };
+		82F4714220AAE36D002E148E /* LogOutScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F4714120AAE36C002E148E /* LogOutScreen.swift */; };
+		82F4714420AAE4A4002E148E /* InsertMenuScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F4714320AAE4A4002E148E /* InsertMenuScreen.swift */; };
+		82F4714620AAE513002E148E /* MenuFavouriteScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F4714520AAE513002E148E /* MenuFavouriteScreen.swift */; };
+		82F4714820AAE53D002E148E /* CalenderScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F4714720AAE53D002E148E /* CalenderScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +58,19 @@
 		82F4711520AA9C9E002E148E /* ProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		82F4711920AA9C9E002E148E /* ProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectUITests.swift; sourceTree = "<group>"; };
 		82F4711B20AA9C9E002E148E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		82F4712720AA9D27002E148E /* Project-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Project-Bridging-Header.h"; sourceTree = "<group>"; };
+		82F4712820AA9D27002E148E /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		82F4712920AA9D27002E148E /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		82F4712B20AAA14B002E148E /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		82F4712D20AAA15F002E148E /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
+		82F4713120AAB0DD002E148E /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
+		82F4713920AAC396002E148E /* BaseMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMenuController.swift; sourceTree = "<group>"; };
+		82F4713D20AAD98E002E148E /* MenuPopularScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPopularScreen.swift; sourceTree = "<group>"; };
+		82F4713F20AAE0D1002E148E /* MenuFromLikeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFromLikeScreen.swift; sourceTree = "<group>"; };
+		82F4714120AAE36C002E148E /* LogOutScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutScreen.swift; sourceTree = "<group>"; };
+		82F4714320AAE4A4002E148E /* InsertMenuScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertMenuScreen.swift; sourceTree = "<group>"; };
+		82F4714520AAE513002E148E /* MenuFavouriteScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFavouriteScreen.swift; sourceTree = "<group>"; };
+		82F4714720AAE53D002E148E /* CalenderScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,10 +123,23 @@
 			children = (
 				82F470F920AA9C9D002E148E /* AppDelegate.swift */,
 				82F470FB20AA9C9D002E148E /* ViewController.swift */,
+				82F4712D20AAA15F002E148E /* MenuController.swift */,
+				82F4713120AAB0DD002E148E /* MenuCell.swift */,
+				82F4712B20AAA14B002E148E /* HomeController.swift */,
+				82F4713D20AAD98E002E148E /* MenuPopularScreen.swift */,
+				82F4713F20AAE0D1002E148E /* MenuFromLikeScreen.swift */,
+				82F4714320AAE4A4002E148E /* InsertMenuScreen.swift */,
+				82F4714520AAE513002E148E /* MenuFavouriteScreen.swift */,
+				82F4714720AAE53D002E148E /* CalenderScreen.swift */,
+				82F4714120AAE36C002E148E /* LogOutScreen.swift */,
+				82F4713920AAC396002E148E /* BaseMenuController.swift */,
 				82F470FD20AA9C9D002E148E /* Main.storyboard */,
 				82F4710020AA9C9D002E148E /* Assets.xcassets */,
 				82F4710220AA9C9D002E148E /* LaunchScreen.storyboard */,
 				82F4710520AA9C9D002E148E /* Info.plist */,
+				82F4712920AA9D27002E148E /* SWRevealViewController.h */,
+				82F4712820AA9D27002E148E /* SWRevealViewController.m */,
+				82F4712720AA9D27002E148E /* Project-Bridging-Header.h */,
 			);
 			path = Project;
 			sourceTree = "<group>";
@@ -193,6 +230,7 @@
 				TargetAttributes = {
 					82F470F520AA9C9D002E148E = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 					82F4710920AA9C9D002E148E = {
@@ -259,8 +297,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82F4714420AAE4A4002E148E /* InsertMenuScreen.swift in Sources */,
+				82F4714820AAE53D002E148E /* CalenderScreen.swift in Sources */,
+				82F4712E20AAA15F002E148E /* MenuController.swift in Sources */,
+				82F4714620AAE513002E148E /* MenuFavouriteScreen.swift in Sources */,
+				82F4714220AAE36D002E148E /* LogOutScreen.swift in Sources */,
+				82F4714020AAE0D1002E148E /* MenuFromLikeScreen.swift in Sources */,
+				82F4712C20AAA14B002E148E /* HomeController.swift in Sources */,
+				82F4713A20AAC396002E148E /* BaseMenuController.swift in Sources */,
+				82F4713220AAB0DD002E148E /* MenuCell.swift in Sources */,
 				82F470FC20AA9C9D002E148E /* ViewController.swift in Sources */,
+				82F4713E20AAD98E002E148E /* MenuPopularScreen.swift in Sources */,
 				82F470FA20AA9C9D002E148E /* AppDelegate.swift in Sources */,
+				82F4712A20AA9D28002E148E /* SWRevealViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,11 +475,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Project/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zoic.Project;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Project/Project-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -440,11 +492,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Project/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zoic.Project;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Project/Project-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
