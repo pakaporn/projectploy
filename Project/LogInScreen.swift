@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LogInScreen: UIViewController {
+class LogInScreen: BaseMenuController {
 
     @IBOutlet weak var menuButton: UIBarButtonItem!
     

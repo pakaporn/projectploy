@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LogInGmail: UIViewController {
+class LogInGmail: BaseMenuController {
 
     @IBOutlet weak var menuButton: UIBarButtonItem!
     

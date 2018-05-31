@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MenuFavouriteDetail: UIViewController {
+class MenuFavouriteDetail: BaseMenuController {
 
     @IBOutlet weak var menuButton: UIBarButtonItem!
     

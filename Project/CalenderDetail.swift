@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CalenderDetail: UIViewController {
+class CalenderDetail: BaseMenuController {
 
     @IBOutlet weak var menuButton: UIBarButtonItem!
     

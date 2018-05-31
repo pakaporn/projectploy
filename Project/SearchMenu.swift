@@ -1,28 +1,28 @@
 //
-//  MenuFromLikeDetail.swift
+//  SearchMenu.swift
 //  Project
 //
-//  Created by Pakaporn on 5/16/2561 BE.
+//  Created by Pakaporn on 5/17/2561 BE.
 //  Copyright © 2561 Pakaporn. All rights reserved.
 //
 
 import UIKit
 
-class MenuFromLikeDetail: UIViewController {
+class SearchMenu: BaseMenuController  {
 
     @IBOutlet weak var menuButton: UIBarButtonItem!
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let iden = "MenuFromLikeDetail"
+        let iden = "SearchMenu"
         if segue.identifier == iden {
-            let menuFronLikeDetail = segue.destination as! MenuFromLikeDetail
+            let searchMenu = segue.destination as! SearchMenu
         }
     }
     
-    
 }
+
 

@@ -11,7 +11,7 @@ import UIKit
 class MenuController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet var profileImage: UIImageView!
-    var menuOptions = ["Home","MenuPopular","Menufromlike","InsertMenu","MenuFavourite","Calender","Logout"]
+    var menuOptions = ["Search","MenuPopular","InsertMenu","MenuFavourite","Calender","Logout"]
 
     override func viewDidLoad() {
         super.viewDidLoad()

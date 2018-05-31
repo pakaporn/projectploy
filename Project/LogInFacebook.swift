@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LogInFacebook: UIViewController {
+class LogInFacebook: BaseMenuController {
 
     @IBOutlet weak var menuButton: UIBarButtonItem!
     

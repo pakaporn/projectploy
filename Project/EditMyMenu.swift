@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EditMyMenu: UIViewController {
+class EditMyMenu: BaseMenuController {
 
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
