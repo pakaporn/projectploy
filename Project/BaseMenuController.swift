@@ -13,7 +13,7 @@ class BaseMenuController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Item", style: .plain, target: self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icons25"), style: UIBarButtonItemStyle.plain, target: self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)))
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         self.revealViewController().rearViewRevealWidth = 240
 

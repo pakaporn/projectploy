@@ -14,6 +14,8 @@ class MenuFavouriteDetail: BaseMenuController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.hidesBarsOnSwipe = true 
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

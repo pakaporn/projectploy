@@ -8,18 +8,84 @@
 
 import UIKit
 import Firebase
+import FBSDKCoreKit
+import GoogleSignIn
+
+let primaryColor = UIColor(red: 109/255, green: 230/255, blue: 150/255, alpha: 1)
+let secondaryColor = UIColor(red: 52/255, green: 148/255, blue: 200/255, alpha: 1)
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     var window: UIWindow?
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         FirebaseApp.configure()
+ 
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+        GIDSignIn.sharedInstance().delegate = self
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+
+        UINavigationBar.appearance().barTintColor = UIColor(red: 0.9, green: 0.6, blue: 0.6, alpha: 0.8)
+        
+        let authListener = Auth.auth().addStateDidChangeListener { auth, user in
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            if user != nil {
+                
+                UserService.observeUserProfile(user!.uid) { userProfile in
+                    UserService.currentUserProfile = userProfile
+                }
+                
+                //
+                let controller = storyboard.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
+                self.window?.rootViewController = controller
+                self.window?.makeKeyAndVisible()
+            } else {
+                
+                UserService.currentUserProfile = nil
+                
+                // menu screen
+                let controller = storyboard.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
+                self.window?.rootViewController = controller
+                self.window?.makeKeyAndVisible()
+            }
+        }
+        
         return true
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if let err = error {
+            print("Failed to log into Google: ",err)
+            return
+        }
+        print("Successfully logged into Google", user)
+        guard let idToken = user.authentication.idToken else { return }
+        guard let accessToken = user.authentication.accessToken else { return }
+        let credentials = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: accessToken)
+        Auth.auth().signIn(with: credentials) { (user, error) in
+            if let err = error {
+                print("Failed to create a Firebase User with Google account", err)
+                return
+            }
+            guard let uid = user?.uid else { return }
+            print("Successfully logged into Firebase with Google", uid)
+        }
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+      
+        let handled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String!, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+        
+        GIDSignIn.sharedInstance().handle(url,
+                                          sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+                                          annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+        
+        return handled
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

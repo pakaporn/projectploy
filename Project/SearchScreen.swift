@@ -1,53 +1,90 @@
 //
-//  SearchScreen.swift
-//  Project
+//  StoriesTableViewController.swift
+//  UITableViewDemo
 //
-//  Created by Pakaporn on 5/28/2561 BE.
-//  Copyright © 2561 Pakaporn. All rights reserved.
+//  Created by Duc Tran on 2/24/16.
+//  Copyright © 2016 Developers Academy. All rights reserved.
 //
 
 import UIKit
-import FirebaseDatabase
+import Firebase
 
 enum selectedScope: Int {
     case ingredients = 0
     case category = 1
 }
 
-class SearchScreen: BaseMenuController, UISearchBarDelegate, UITextViewDelegate, UITableViewDataSource  {
+class SearchScreen: UITableViewController , UISearchBarDelegate, UITextViewDelegate {
     
-
-    @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
-    @IBOutlet weak var tableView: UITableView!
-    let cellidentifier = "Cell"
     
+    var postData = [Menu]()
+    var currentPostData = [Menu]()
     var ref: DatabaseReference?
     var databaseHandle: DatabaseHandle?
-    var postData = [String]()
-    var currentPostData = [String]()
     
-    @IBAction func compose(_ sender: Any) {
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.searchBarSetUp()
+    // 1. create a reference ot the db location you want to download
+    let menuRef = Database.database().reference().child("menu")
+    var menu = [Menu]()
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellidentifier)
-        
-        ref = Database.database().reference()
-        
-        databaseHandle = ref?.child("Posts").observe(.childAdded, with: { (snapshot) in
-            let post = snapshot.value as? String
-            if let actualPost = post {
-                self.postData.append(actualPost)
-                self.currentPostData = self.postData
-                self.tableView.reloadData()
+        // download menu
+        menuRef.observe(.value, with: { (snapshot) in
+            self.menu.removeAll()
+            
+            if self.currentPostData.count == 0 { //เช็คว่าถ้าไม่มีค่าใน currentPostData  จะโหลดข้อมูลจาก firebase
+                for child in snapshot.children {
+                    let childSnapshot = child as! DataSnapshot
+                    let menufood = Menu(snapshot: childSnapshot)
+                    self.menu.insert(menufood, at: 0)
+                    self.postData.append(menufood)
+                    self.currentPostData = self.postData
+                    self.tableView.reloadData()
+                }
+                
             }
+            self.tableView.reloadData()
         })
     }
-  
+    
+    override func viewDidLoad()
+    {
+    
+        super.viewDidLoad()
+        //ref?.child("menu").queryOrdered(byChild: "text")
+//
+//        DataService.ds.MSGS_DB_REF.queryOrdered(byChild: "text").observe(.value) { (snapshot) in
+//            self.menu = [Menu]()
+//
+//            if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
+//                for snap in snapshot {
+//                    if (snap.value as? [String: AnyObject]) != nil {
+//                        let message = Menu(text: snap.key, ingredient: snap.key, method: snap.key)
+//                        self.menu.append(message)
+//
+//                    }
+//                }
+//                self.tableView.reloadData()
+//            }
+//        }
+        self.searchBarSetUp()
+        
+        self.navigationController?.navigationBar.isHidden = false
+        self.navigationItem.hidesBackButton = true
+        title = "เมนูอาหาร"
+        self.tableView.estimatedRowHeight = 92.0
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icons25"), style: UIBarButtonItemStyle.plain, target: self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)))
+        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        self.revealViewController().rearViewRevealWidth = 240
+        
+        self.navigationController?.hidesBarsOnSwipe = true
+        
+    }
+    
     func searchBarSetUp(){
         let searchBar = UISearchBar(frame: CGRect(x: 0,y: 0,width:(UIScreen.main.bounds.width),height: 70))
         searchBar.showsScopeBar = true
@@ -72,12 +109,12 @@ class SearchScreen: BaseMenuController, UISearchBarDelegate, UITextViewDelegate,
         switch ind  {
         case selectedScope.ingredients.rawValue:
             currentPostData = postData.filter({ (mod) -> Bool in
-                return mod.lowercased().contains(text.lowercased())
+                return mod.getName().lowercased().contains(text.lowercased())
             })
             self.tableView.reloadData()
         case selectedScope.category.rawValue:
             currentPostData = postData.filter({ (mod) -> Bool in
-                return mod.lowercased().contains(text.lowercased())
+                return mod.getName().lowercased().contains(text.lowercased())
             })
             self.tableView.reloadData()
         default:
@@ -85,37 +122,43 @@ class SearchScreen: BaseMenuController, UISearchBarDelegate, UITextViewDelegate,
         }
         
     }
-        
-    func numberOfSections(in tableView: UITableView) -> Int {
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    // MARK: - Table view data source
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        // TODO: return the stories count
         return currentPostData.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellidentifier,for: indexPath)
-        cell.textLabel!.text = currentPostData[indexPath.row]
-        
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Story Cell", for: indexPath) as! SearchScreenCell
+        let menufood = currentPostData[indexPath.row]
+        cell.menufood = menufood
         return cell
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let iden = "Search"
+        let iden = "SearchMenu"
         if segue.identifier == iden {
-            let searchScreen = segue.destination as! SearchScreen
+            let searchMenu = segue.destination as! SearchMenu
+            let name = currentPostData[tableView.indexPathForSelectedRow!.row].getName()
+            let ingredient = currentPostData[tableView.indexPathForSelectedRow!.row].getIngredient()
+            let method = currentPostData[tableView.indexPathForSelectedRow!.row].getMethod()
+            searchMenu.text = name
+            searchMenu.ingredient = ingredient
+            searchMenu.method = method
         }
     }
-    
 }
 
 
-
-
-
-    
-
-
-    
-    

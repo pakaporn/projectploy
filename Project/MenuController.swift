@@ -16,7 +16,7 @@ class MenuController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        profileImage.layer.cornerRadius = 10
+        profileImage.layer.cornerRadius = profileImage.frame.height/2
         profileImage.layer.borderColor = UIColor.black.cgColor
         profileImage.layer.borderWidth = 1.0
         profileImage.clipsToBounds = true

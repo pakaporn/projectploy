@@ -10,6 +10,10 @@
 		1D6A2E42DFF43CFF3DF1FFA7 /* Pods_ProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05145997FC099B7379527D6B /* Pods_ProjectTests.framework */; };
 		2A0FBA3E4E0D8E6E661824BC /* Pods_ProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34B05E941848B4ACCBB23467 /* Pods_ProjectUITests.framework */; };
 		6F20B436431C6E008BF70644 /* Pods_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD7C1B825FCBBDC718094C11 /* Pods_Project.framework */; };
+		8204559B21249DAD002BA436 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8204559A21249DAD002BA436 /* PostTableViewCell.swift */; };
+		8204559D21249EE5002BA436 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8204559C21249EE5002BA436 /* Post.swift */; };
+		8204559F21249F5A002BA436 /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8204559E21249F5A002BA436 /* PostTableViewCell.xib */; };
+		8204C2A320E0AFF50036AF18 /* SearchScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8204C2A220E0AFF50036AF18 /* SearchScreenCell.swift */; };
 		8204E26720AC45100086BA54 /* MenuPopularDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8204E26620AC45100086BA54 /* MenuPopularDetail.swift */; };
 		8204E26B20AC47040086BA54 /* MenuFavouriteDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8204E26A20AC47040086BA54 /* MenuFavouriteDetail.swift */; };
 		8204E26D20AC475F0086BA54 /* CalenderDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8204E26C20AC475F0086BA54 /* CalenderDetail.swift */; };
@@ -18,11 +22,25 @@
 		8204E27320AC48AA0086BA54 /* LogInFacebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8204E27220AC48AA0086BA54 /* LogInFacebook.swift */; };
 		8204E27520AC49550086BA54 /* InsertMyMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8204E27420AC49550086BA54 /* InsertMyMenu.swift */; };
 		8204E27720AC498E0086BA54 /* EditMyMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8204E27620AC498E0086BA54 /* EditMyMenu.swift */; };
-		8204E27920AC49CB0086BA54 /* MyMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8204E27820AC49CB0086BA54 /* MyMenu.swift */; };
 		8204E60E20AD72DC003E79BA /* SearchMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8204E60D20AD72DC003E79BA /* SearchMenu.swift */; };
 		8204E61420AD7A59003E79BA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8204E61320AD7A59003E79BA /* GoogleService-Info.plist */; };
+		82288400214704C600D293D6 /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822883FF214704C600D293D6 /* LoadingCell.swift */; };
+		8228840221471FCA00D293D6 /* MonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8228840121471FCA00D293D6 /* MonthView.swift */; };
+		8228840421471FDD00D293D6 /* WeekdayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8228840321471FDD00D293D6 /* WeekdayView.swift */; };
+		8228840621471FEB00D293D6 /* CalenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8228840521471FEB00D293D6 /* CalenderView.swift */; };
+		823C2A4221255C3600EAB5FD /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823C2A4121255C3600EAB5FD /* NewPostViewController.swift */; };
+		823C2A4421255C5900EAB5FD /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823C2A4321255C5900EAB5FD /* UserService.swift */; };
+		823C2A4621255CF800EAB5FD /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823C2A4521255CF800EAB5FD /* UserProfile.swift */; };
+		823C2A482125616000EAB5FD /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823C2A472125616000EAB5FD /* ImageService.swift */; };
 		8297D98920BC1A6700B89F82 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8297D98820BC1A6600B89F82 /* Main.storyboard */; };
 		8297D98F20BC207300B89F82 /* SearchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8297D98E20BC207300B89F82 /* SearchScreen.swift */; };
+		82C7095A21247C0F001D3548 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7095921247C0F001D3548 /* MenuViewController.swift */; };
+		82C7095C21247D74001D3548 /* HelperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7095B21247D73001D3548 /* HelperExtensions.swift */; };
+		82C7095E21247F7D001D3548 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7095D21247F7D001D3548 /* LoginViewController.swift */; };
+		82C7096021247FB6001D3548 /* RoundedWhiteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7095F21247FB6001D3548 /* RoundedWhiteButton.swift */; };
+		82C7096221247FEA001D3548 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7096121247FEA001D3548 /* SignUpViewController.swift */; };
+		82C709642124800C001D3548 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C709632124800C001D3548 /* HomeViewController.swift */; };
+		82ECB04520EBCC7E007EDBF3 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ECB04420EBCC7E007EDBF3 /* Menu.swift */; };
 		82F470FA20AA9C9D002E148E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F470F920AA9C9D002E148E /* AppDelegate.swift */; };
 		82F470FC20AA9C9D002E148E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F470FB20AA9C9D002E148E /* ViewController.swift */; };
 		82F4710120AA9C9D002E148E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82F4710020AA9C9D002E148E /* Assets.xcassets */; };
@@ -38,6 +56,10 @@
 		82F4714420AAE4A4002E148E /* InsertMenuScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F4714320AAE4A4002E148E /* InsertMenuScreen.swift */; };
 		82F4714620AAE513002E148E /* MenuFavouriteScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F4714520AAE513002E148E /* MenuFavouriteScreen.swift */; };
 		82F4714820AAE53D002E148E /* CalenderScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F4714720AAE53D002E148E /* CalenderScreen.swift */; };
+		82FF732220F128A000A253AA /* MyMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FF732120F128A000A253AA /* MyMenu.swift */; };
+		82FF732420F128D200A253AA /* MyMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FF732320F128D200A253AA /* MyMenuCell.swift */; };
+		82FF732620F12D1500A253AA /* MyMenuDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FF732520F12D1500A253AA /* MyMenuDetail.swift */; };
+		82FF732820F1316C00A253AA /* MenuDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FF732720F1316C00A253AA /* MenuDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +84,10 @@
 		05145997FC099B7379527D6B /* Pods_ProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		34B05E941848B4ACCBB23467 /* Pods_ProjectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProjectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		778A1B242790F1E887323B4A /* Pods-ProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ProjectTests/Pods-ProjectTests.release.xcconfig"; sourceTree = "<group>"; };
+		8204559A21249DAD002BA436 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		8204559C21249EE5002BA436 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		8204559E21249F5A002BA436 /* PostTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
+		8204C2A220E0AFF50036AF18 /* SearchScreenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenCell.swift; sourceTree = "<group>"; };
 		8204E26620AC45100086BA54 /* MenuPopularDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPopularDetail.swift; sourceTree = "<group>"; };
 		8204E26A20AC47040086BA54 /* MenuFavouriteDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFavouriteDetail.swift; sourceTree = "<group>"; };
 		8204E26C20AC475F0086BA54 /* CalenderDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderDetail.swift; sourceTree = "<group>"; };
@@ -70,11 +96,26 @@
 		8204E27220AC48AA0086BA54 /* LogInFacebook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInFacebook.swift; sourceTree = "<group>"; };
 		8204E27420AC49550086BA54 /* InsertMyMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertMyMenu.swift; sourceTree = "<group>"; };
 		8204E27620AC498E0086BA54 /* EditMyMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMyMenu.swift; sourceTree = "<group>"; };
-		8204E27820AC49CB0086BA54 /* MyMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMenu.swift; sourceTree = "<group>"; };
 		8204E60D20AD72DC003E79BA /* SearchMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMenu.swift; sourceTree = "<group>"; };
 		8204E61320AD7A59003E79BA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8205991F213EB1F6006A5415 /* Project.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Project.entitlements; sourceTree = "<group>"; };
+		822883FF214704C600D293D6 /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
+		8228840121471FCA00D293D6 /* MonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthView.swift; sourceTree = "<group>"; };
+		8228840321471FDD00D293D6 /* WeekdayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekdayView.swift; sourceTree = "<group>"; };
+		8228840521471FEB00D293D6 /* CalenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderView.swift; sourceTree = "<group>"; };
+		823C2A4121255C3600EAB5FD /* NewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
+		823C2A4321255C5900EAB5FD /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		823C2A4521255CF800EAB5FD /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		823C2A472125616000EAB5FD /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		8297D98820BC1A6600B89F82 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		8297D98E20BC207300B89F82 /* SearchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreen.swift; sourceTree = "<group>"; };
+		82C7095921247C0F001D3548 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		82C7095B21247D73001D3548 /* HelperExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperExtensions.swift; sourceTree = "<group>"; };
+		82C7095D21247F7D001D3548 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		82C7095F21247FB6001D3548 /* RoundedWhiteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedWhiteButton.swift; sourceTree = "<group>"; };
+		82C7096121247FEA001D3548 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		82C709632124800C001D3548 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		82ECB04420EBCC7E007EDBF3 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		82F470F620AA9C9D002E148E /* Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82F470F920AA9C9D002E148E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82F470FB20AA9C9D002E148E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +139,10 @@
 		82F4714320AAE4A4002E148E /* InsertMenuScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertMenuScreen.swift; sourceTree = "<group>"; };
 		82F4714520AAE513002E148E /* MenuFavouriteScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFavouriteScreen.swift; sourceTree = "<group>"; };
 		82F4714720AAE53D002E148E /* CalenderScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderScreen.swift; sourceTree = "<group>"; };
+		82FF732120F128A000A253AA /* MyMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMenu.swift; sourceTree = "<group>"; };
+		82FF732320F128D200A253AA /* MyMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMenuCell.swift; sourceTree = "<group>"; };
+		82FF732520F12D1500A253AA /* MyMenuDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMenuDetail.swift; sourceTree = "<group>"; };
+		82FF732720F1316C00A253AA /* MenuDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDetail.swift; sourceTree = "<group>"; };
 		AF0742142F58A49C91F43F71 /* Pods-Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Project/Pods-Project.debug.xcconfig"; sourceTree = "<group>"; };
 		CA78AA62244C060B0667E37B /* Pods-ProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProjectTests/Pods-ProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D6FD7A3512BB3190D17ADCE9 /* Pods-ProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProjectUITests/Pods-ProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -158,11 +203,13 @@
 		82F470F820AA9C9D002E148E /* Project */ = {
 			isa = PBXGroup;
 			children = (
+				8205991F213EB1F6006A5415 /* Project.entitlements */,
 				82F470F920AA9C9D002E148E /* AppDelegate.swift */,
 				82F470FB20AA9C9D002E148E /* ViewController.swift */,
 				82F4712D20AAA15F002E148E /* MenuController.swift */,
 				82F4713120AAB0DD002E148E /* MenuCell.swift */,
 				8297D98E20BC207300B89F82 /* SearchScreen.swift */,
+				8204C2A220E0AFF50036AF18 /* SearchScreenCell.swift */,
 				8204E60D20AD72DC003E79BA /* SearchMenu.swift */,
 				82F4713D20AAD98E002E148E /* MenuPopularScreen.swift */,
 				8204E26620AC45100086BA54 /* MenuPopularDetail.swift */,
@@ -170,15 +217,36 @@
 				8204E26E20AC48570086BA54 /* LogInScreen.swift */,
 				8204E27020AC48990086BA54 /* LogInGmail.swift */,
 				8204E27220AC48AA0086BA54 /* LogInFacebook.swift */,
-				8204E27820AC49CB0086BA54 /* MyMenu.swift */,
-				8204E27620AC498E0086BA54 /* EditMyMenu.swift */,
+				82FF732120F128A000A253AA /* MyMenu.swift */,
+				82FF732320F128D200A253AA /* MyMenuCell.swift */,
 				8204E27420AC49550086BA54 /* InsertMyMenu.swift */,
+				8204E27620AC498E0086BA54 /* EditMyMenu.swift */,
+				82FF732520F12D1500A253AA /* MyMenuDetail.swift */,
 				82F4714520AAE513002E148E /* MenuFavouriteScreen.swift */,
 				8204E26A20AC47040086BA54 /* MenuFavouriteDetail.swift */,
 				82F4714720AAE53D002E148E /* CalenderScreen.swift */,
+				8228840121471FCA00D293D6 /* MonthView.swift */,
+				8228840321471FDD00D293D6 /* WeekdayView.swift */,
+				8228840521471FEB00D293D6 /* CalenderView.swift */,
 				8204E26C20AC475F0086BA54 /* CalenderDetail.swift */,
 				82F4714120AAE36C002E148E /* LogOutScreen.swift */,
 				82F4713920AAC396002E148E /* BaseMenuController.swift */,
+				82ECB04420EBCC7E007EDBF3 /* Menu.swift */,
+				82FF732720F1316C00A253AA /* MenuDetail.swift */,
+				8204559C21249EE5002BA436 /* Post.swift */,
+				823C2A4321255C5900EAB5FD /* UserService.swift */,
+				823C2A4521255CF800EAB5FD /* UserProfile.swift */,
+				823C2A472125616000EAB5FD /* ImageService.swift */,
+				82C7095921247C0F001D3548 /* MenuViewController.swift */,
+				82C7095D21247F7D001D3548 /* LoginViewController.swift */,
+				82C7095F21247FB6001D3548 /* RoundedWhiteButton.swift */,
+				82C7096121247FEA001D3548 /* SignUpViewController.swift */,
+				82C709632124800C001D3548 /* HomeViewController.swift */,
+				8204559A21249DAD002BA436 /* PostTableViewCell.swift */,
+				823C2A4121255C3600EAB5FD /* NewPostViewController.swift */,
+				82C7095B21247D73001D3548 /* HelperExtensions.swift */,
+				822883FF214704C600D293D6 /* LoadingCell.swift */,
+				8204559E21249F5A002BA436 /* PostTableViewCell.xib */,
 				8297D98820BC1A6600B89F82 /* Main.storyboard */,
 				82F4710020AA9C9D002E148E /* Assets.xcassets */,
 				82F4710220AA9C9D002E148E /* LaunchScreen.storyboard */,
@@ -244,6 +312,7 @@
 				82F470F320AA9C9D002E148E /* Frameworks */,
 				82F470F420AA9C9D002E148E /* Resources */,
 				158C0B9EE0F1DEA2444D92C5 /* [CP] Embed Pods Frameworks */,
+				8409BA4B3DC2A718D6129409 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -306,6 +375,11 @@
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					82F4710920AA9C9D002E148E = {
 						CreatedOnToolsVersion = 9.2;
@@ -345,6 +419,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				82F4710420AA9C9D002E148E /* LaunchScreen.storyboard in Resources */,
+				8204559F21249F5A002BA436 /* PostTableViewCell.xib in Resources */,
 				8204E61420AD7A59003E79BA /* GoogleService-Info.plist in Resources */,
 				82F4710120AA9C9D002E148E /* Assets.xcassets in Resources */,
 				8297D98920BC1A6700B89F82 /* Main.storyboard in Resources */,
@@ -375,12 +450,24 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Project/Pods-Project-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -426,6 +513,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		8409BA4B3DC2A718D6129409 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Project/Pods-Project-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Project/Pods-Project-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		B0E52EEAA10A1FAAE35FFF92 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -451,19 +556,38 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8204E27920AC49CB0086BA54 /* MyMenu.swift in Sources */,
+				82288400214704C600D293D6 /* LoadingCell.swift in Sources */,
+				82FF732220F128A000A253AA /* MyMenu.swift in Sources */,
+				82FF732420F128D200A253AA /* MyMenuCell.swift in Sources */,
 				82F4714420AAE4A4002E148E /* InsertMenuScreen.swift in Sources */,
+				82C7095A21247C0F001D3548 /* MenuViewController.swift in Sources */,
 				8204E26F20AC48570086BA54 /* LogInScreen.swift in Sources */,
+				823C2A4221255C3600EAB5FD /* NewPostViewController.swift in Sources */,
 				8204E27120AC48990086BA54 /* LogInGmail.swift in Sources */,
 				8204E26B20AC47040086BA54 /* MenuFavouriteDetail.swift in Sources */,
+				823C2A482125616000EAB5FD /* ImageService.swift in Sources */,
 				82F4714820AAE53D002E148E /* CalenderScreen.swift in Sources */,
+				82FF732620F12D1500A253AA /* MyMenuDetail.swift in Sources */,
+				8228840221471FCA00D293D6 /* MonthView.swift in Sources */,
 				82F4712E20AAA15F002E148E /* MenuController.swift in Sources */,
+				82C7096221247FEA001D3548 /* SignUpViewController.swift in Sources */,
+				8228840421471FDD00D293D6 /* WeekdayView.swift in Sources */,
+				8204C2A320E0AFF50036AF18 /* SearchScreenCell.swift in Sources */,
+				82C7095C21247D74001D3548 /* HelperExtensions.swift in Sources */,
+				823C2A4621255CF800EAB5FD /* UserProfile.swift in Sources */,
+				823C2A4421255C5900EAB5FD /* UserService.swift in Sources */,
 				82F4714620AAE513002E148E /* MenuFavouriteScreen.swift in Sources */,
 				82F4714220AAE36D002E148E /* LogOutScreen.swift in Sources */,
+				82FF732820F1316C00A253AA /* MenuDetail.swift in Sources */,
 				8204E27320AC48AA0086BA54 /* LogInFacebook.swift in Sources */,
 				82F4713A20AAC396002E148E /* BaseMenuController.swift in Sources */,
 				82F4713220AAB0DD002E148E /* MenuCell.swift in Sources */,
+				8204559D21249EE5002BA436 /* Post.swift in Sources */,
+				8228840621471FEB00D293D6 /* CalenderView.swift in Sources */,
+				8204559B21249DAD002BA436 /* PostTableViewCell.swift in Sources */,
+				82C7095E21247F7D001D3548 /* LoginViewController.swift in Sources */,
 				8204E27720AC498E0086BA54 /* EditMyMenu.swift in Sources */,
+				82ECB04520EBCC7E007EDBF3 /* Menu.swift in Sources */,
 				8204E26D20AC475F0086BA54 /* CalenderDetail.swift in Sources */,
 				82F470FC20AA9C9D002E148E /* ViewController.swift in Sources */,
 				82F4713E20AAD98E002E148E /* MenuPopularScreen.swift in Sources */,
@@ -471,7 +595,9 @@
 				82F470FA20AA9C9D002E148E /* AppDelegate.swift in Sources */,
 				82F4712A20AA9D28002E148E /* SWRevealViewController.m in Sources */,
 				8204E60E20AD72DC003E79BA /* SearchMenu.swift in Sources */,
+				82C709642124800C001D3548 /* HomeViewController.swift in Sources */,
 				8204E27520AC49550086BA54 /* InsertMyMenu.swift in Sources */,
+				82C7096021247FB6001D3548 /* RoundedWhiteButton.swift in Sources */,
 				8297D98F20BC207300B89F82 /* SearchScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -632,7 +758,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Project/Project.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CB5U466A8G;
 				INFOPLIST_FILE = Project/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zoic.Project;
@@ -650,7 +778,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Project/Project.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CB5U466A8G;
 				INFOPLIST_FILE = Project/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zoic.Project;
