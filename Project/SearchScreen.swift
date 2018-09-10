@@ -4,7 +4,7 @@
 //
 //  Created by Duc Tran on 2/24/16.
 //  Copyright © 2016 Developers Academy. All rights reserved.
-//
+///
 
 import UIKit
 import Firebase
