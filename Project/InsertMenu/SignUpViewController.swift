@@ -24,7 +24,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
         view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
         
         continueButton = RoundedWhiteButton(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
@@ -35,7 +34,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         continueButton.highlightedColor = UIColor(white: 1.0, alpha: 1.0)
         continueButton.defaultColor = UIColor.white
         continueButton.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
-        
         view.addSubview(continueButton)
         setContinueButton(enabled: false)
         
@@ -43,7 +41,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         activityView.color = secondaryColor
         activityView.frame = CGRect(x: 0, y: 0, width: 50.0, height: 50.0)
         activityView.center = continueButton.center
-        
         view.addSubview(activityView)
         
         usernameField.delegate = self
@@ -67,7 +64,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         imagePicker.delegate = self
     }
     
-    @objc func openImagePicker(_ sender:Any) {
+    @objc func openImagePicker(_ sender: Any) {
         // Open Image Picker
         self.present(imagePicker, animated: true, completion: nil)
     }
@@ -97,7 +94,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func keyboardWillAppear(notification: NSNotification){
-        
         let info = notification.userInfo!
         let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         continueButton.center = CGPoint(x: view.center.x,
@@ -114,7 +110,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
         switch textField {
         case usernameField:
             usernameField.resignFirstResponder()
@@ -163,11 +158,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                         let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
                         changeRequest?.displayName = username
                         changeRequest?.photoURL = url
-                        
                         changeRequest?.commitChanges { error in
                             if error == nil {
                                 print("User display name changed!")
-                                
                                 self.saveProfile(username: username, profileImageURL: url!) { success in
                                     if success {
                                         self.dismiss(animated: true, completion: nil)
@@ -175,7 +168,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                                         self.resetForm()
                                     }
                                 }
-                                
                             } else {
                                 print("Error: \(error!.localizedDescription)")
                                 self.resetForm()
@@ -201,12 +193,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         activityView.stopAnimating()
     }
     
-    func uploadProfileImage(_ image: UIImage, completion: @escaping ((_ url:URL?)->())) {
+    func uploadProfileImage(_ image: UIImage, completion: @escaping ((_ url: URL?)->())) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         let storageRef = Storage.storage().reference().child("user/\(uid)")
         
         guard let imageData = UIImageJPEGRepresentation(image, 0.75) else { return }
-        
         let metaData = StorageMetadata()
         metaData.contentType = "image/jpg"
         
@@ -228,12 +219,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     func saveProfile(username: String, profileImageURL: URL, completion: @escaping ((_ success:Bool)->())) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         let databaseRef = Database.database().reference().child("users/profile/\(uid)")
-        
         let userObject = [
             "username": username,
             "photoURL": profileImageURL.absoluteString
             ] as [String:Any]
-        
         databaseRef.setValue(userObject) { error, ref in
             completion(error == nil)
         }
@@ -247,7 +236,6 @@ extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationCon
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
         if let pickedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
             self.profileImageView.image = pickedImage
         }

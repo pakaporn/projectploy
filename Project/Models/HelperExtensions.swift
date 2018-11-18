@@ -2,10 +2,9 @@
 import Foundation
 import UIKit
 
-extension Date
-{
-    func calenderTimeSinceNow() -> String
-    {
+extension Date {
+    
+    func calenderTimeSinceNow() -> String {
         let calendar = Calendar.current
         let components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self, to: Date())
         let years = components.year!
@@ -56,7 +55,8 @@ extension UIButton {
 }
 
 extension UIView {
-    func addVerticalGradientLayer(topColor:UIColor, bottomColor:UIColor) {
+    
+    func addVerticalGradientLayer(topColor: UIColor, bottomColor: UIColor) {
         let gradient = CAGradientLayer()
         gradient.frame = self.bounds
         gradient.colors = [

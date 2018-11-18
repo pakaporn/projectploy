@@ -15,53 +15,69 @@ import Firebase
 //    case category = 2
 //}
 
-class SearchByCheckList: UITableViewController , UISearchBarDelegate, UITextViewDelegate {
+class SearchByCheckList: UITableViewController, UISearchBarDelegate, UITextViewDelegate {
     
     var keepTaskNamee : [String] = []
     var realCurrentData : [Menu] = []
+    var keepDataFilter = [Substring]()
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
-    
     var postData = [Menu]()
     var currentPostData = [Menu]()
     var ref: DatabaseReference?
     //var databaseHandle: DatabaseHandle?
-    
     // 1. create a reference to the db location you want to download
     let menuRef = Database.database().reference().child("menu")
     var menu = [Menu]()
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print(keepTaskNamee)
         // download menu
-        //for
-        for name in keepTaskNamee{
-            let queryRef = menuRef.queryOrdered(byChild: "ingredient").queryEqual(toValue: name)
-            print(name)
-            queryRef.observe(.value, with: { (snapshot) in
-                //if self.currentPostData.count < 1 {
-                //    self.menu.removeAll()
-                //}
-                //if self.currentPostData.count == 0 { //เช็คว่าถ้าไม่มีค่าใน currentPostData  จะโหลดข้อมูลจาก firebase
-                    for child in snapshot.children {
-                        let childSnapshot = child as! DataSnapshot
-                        let menufood = Menu(snapshot: childSnapshot)
-                        self.menu.insert(menufood, at: 0)
-                        self.postData.append(menufood)
-                        self.currentPostData = self.postData
-                        self.tableView.reloadData()
+        menuRef.observe(.value, with: { (snapshot) in
+            self.menu.removeAll()
+            
+            if self.currentPostData.count == 0 { //เช็คว่าถ้าไม่มีค่าใน currentPostData  จะโหลดข้อมูลจาก firebase
+                for child in snapshot.children {
+                    let childSnapshot = child as! DataSnapshot
+                    let menufood = Menu(snapshot: childSnapshot)
+                    self.menu.insert(menufood, at: 0)
+                    self.keepDataFilter = []
+                    for ingredient in self.menu[0].getIngredient().split(separator: " "){
+                        self.keepDataFilter.append(ingredient)
                     }
-                    
-                //}
-                self.tableView.reloadData()
-            })
-        }
+                    for ingredientSelected in self.keepTaskNamee{
+                        for ingredientMain in self.keepDataFilter{
+                            if ingredientSelected == ingredientMain {
+                                self.postData.append(menufood)
+                                self.currentPostData = self.postData
+                                self.tableView.reloadData()
+                            }
+                        }
+                    }
+                }
+                var keepF = [Int]()
+                var keepS = [Int]()
+                for index in 0...self.currentPostData.count-1 {
+                    for indexIn in 0...index{
+                        if index != indexIn {
+                            if self.currentPostData[index].getName() == self.currentPostData[indexIn].getName() {
+                                keepF.append(index)
+                                keepS.append(indexIn)
+                            }
+                        }
+                    }
+                }
+                if keepF.count > 0 {
+                    for num in 0...keepF.count-1{
+                        self.currentPostData.remove(at: keepF[num])
+                    }
+                }
+            }
+            self.tableView.reloadData()
+        })
     }
     
-    override func viewDidLoad()
-    {
-        
+    override func viewDidLoad() {
         super.viewDidLoad()
         //ref?.child("menu").queryOrdered(byChild: "text")
         //
@@ -92,11 +108,10 @@ class SearchByCheckList: UITableViewController , UISearchBarDelegate, UITextView
         self.revealViewController().rearViewRevealWidth = 240
         
         self.navigationController?.hidesBarsOnSwipe = true
-        
     }
     
-    func searchBarSetUp(){
-        let searchBar = UISearchBar(frame: CGRect(x: 0,y: 0,width:(UIScreen.main.bounds.width),height: 70))
+    func searchBarSetUp() {
+        let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width:(UIScreen.main.bounds.width), height: 70))
         searchBar.showsScopeBar = true
         searchBar.scopeButtonTitles = ["ค้นหาโดยชื่อเมนูอาหาร", "ค้นหาโดยวัตถุดิบ"]
         searchBar.selectedScopeButtonIndex = 0
@@ -108,11 +123,10 @@ class SearchByCheckList: UITableViewController , UISearchBarDelegate, UITextView
         if searchText.isEmpty{
             currentPostData = postData
             self.tableView.reloadData()
-        }else{
+        } else {
             filterTableView(ind: searchBar.selectedScopeButtonIndex,text: searchText)
         }
         self.tableView.reloadData()
-        
     }
     
     func filterTableView(ind: Int, text: String){
@@ -135,15 +149,11 @@ class SearchByCheckList: UITableViewController , UISearchBarDelegate, UITextView
         default:
             print("No Data")
         }
-        
-        
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-    
-    // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -151,7 +161,6 @@ class SearchByCheckList: UITableViewController , UISearchBarDelegate, UITextView
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        // TODO: return the stories count
         return currentPostData.count
     }
     
@@ -162,5 +171,19 @@ class SearchByCheckList: UITableViewController , UISearchBarDelegate, UITextView
         cell.menufood = menufood
         return cell
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let iden = "SearchCheckList"
+        if segue.identifier == iden {
+            let searchCheckList = segue.destination as! SearchByCheckListDetail
+            let name = currentPostData[tableView.indexPathForSelectedRow!.row].getName()
+            let ingredient = currentPostData[tableView.indexPathForSelectedRow!.row].getIngredient()
+            let method = currentPostData[tableView.indexPathForSelectedRow!.row].getMethod()
+            let category = currentPostData[tableView.indexPathForSelectedRow!.row].getCategory()
+            searchCheckList.menu = name
+            searchCheckList.ingredient = ingredient
+            searchCheckList.method = method
+            searchCheckList.keepCategory = category
+        }
+    }
 }

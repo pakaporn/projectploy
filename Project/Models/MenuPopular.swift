@@ -10,6 +10,7 @@ import Foundation
 import Firebase
 
 class MenuPopular {
+    
     var menu: String = ""
     var ingredient: String = ""
     var method: String = ""
@@ -18,7 +19,7 @@ class MenuPopular {
     let ref: DatabaseReference!
     
     
-    init(menu: String,ingredient: String,method: String,category: String) {
+    init(menu: String, ingredient: String, method: String, category: String) {
         self.menu = menu
         self.ingredient = ingredient
         self.method = method

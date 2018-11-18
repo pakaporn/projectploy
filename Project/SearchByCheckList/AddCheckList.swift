@@ -24,16 +24,13 @@ class AddCheckList: UIViewController {
     }
     
     @IBOutlet weak var nameTextField: UITextField!
-    
     var delegate: AddTask?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
     }
 }
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class InsertMenuScreen: UIViewController {
+class InsertMenuScreen: BaseMenuController {
   
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet var signUpButton: UIButton!
@@ -16,7 +16,6 @@ class InsertMenuScreen: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         signUpButton.layer.cornerRadius = signUpButton.bounds.height/2
         logInButton.layer.cornerRadius = logInButton.bounds.height/2
         
@@ -30,6 +29,4 @@ class InsertMenuScreen: UIViewController {
             let insertMenuScreen = segue.destination as! InsertMenuScreen
         }
     }
-    
-    
 }

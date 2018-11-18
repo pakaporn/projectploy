@@ -20,7 +20,6 @@ class SearchByCategory: UITableViewController , UISearchBarDelegate, UITextViewD
     var currentPostData = [Menu]()
     var ref: DatabaseReference?
     //var databaseHandle: DatabaseHandle?
-    
     // 1. create a reference to the db location you want to download
     let menuRef = Database.database().reference().child("menu")
     var menu = [Menu]()
@@ -30,7 +29,6 @@ class SearchByCategory: UITableViewController , UISearchBarDelegate, UITextViewD
         print("this is keepTaskNamee ")
         print(keepTaskNamee)
         // download menu
-        //for
         let queryRef = menuRef.queryOrdered(byChild: "category").queryEqual(toValue: keepTaskNamee)
         
         queryRef.observe(.value, with: { (snapshot) in
@@ -45,15 +43,12 @@ class SearchByCategory: UITableViewController , UISearchBarDelegate, UITextViewD
                     self.currentPostData = self.postData
                     self.tableView.reloadData()
                 }
-                
             }
             self.tableView.reloadData()
         })
     }
     
-    override func viewDidLoad()
-    {
-        
+    override func viewDidLoad() {
         super.viewDidLoad()
         //ref?.child("menu").queryOrdered(byChild: "text")
         //
@@ -84,11 +79,10 @@ class SearchByCategory: UITableViewController , UISearchBarDelegate, UITextViewD
         self.revealViewController().rearViewRevealWidth = 240
         
         self.navigationController?.hidesBarsOnSwipe = true
-        
     }
     
-    func searchBarSetUp(){
-        let searchBar = UISearchBar(frame: CGRect(x: 0,y: 0,width:(UIScreen.main.bounds.width),height: 70))
+    func searchBarSetUp() {
+        let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width:(UIScreen.main.bounds.width), height: 70))
         searchBar.showsScopeBar = true
         searchBar.scopeButtonTitles = ["ค้นหาโดยชื่อเมนูอาหาร", "ค้นหาโดยวัตถุดิบ"]
         searchBar.selectedScopeButtonIndex = 0
@@ -104,7 +98,6 @@ class SearchByCategory: UITableViewController , UISearchBarDelegate, UITextViewD
             filterTableView(ind: searchBar.selectedScopeButtonIndex,text: searchText)
         }
         self.tableView.reloadData()
-        
     }
     
     func filterTableView(ind: Int, text: String){
@@ -133,15 +126,12 @@ class SearchByCategory: UITableViewController , UISearchBarDelegate, UITextViewD
         return .lightContent
     }
     
-    // MARK: - Table view data source
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        // TODO: return the stories count
         return currentPostData.count
     }
     
@@ -151,5 +141,20 @@ class SearchByCategory: UITableViewController , UISearchBarDelegate, UITextViewD
         let menufood = currentPostData[indexPath.row]
         cell.menufood = menufood
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let iden = "SearchCategory"
+        if segue.identifier == iden {
+            let searchCategory = segue.destination as! SearchByCategoryDetail
+            let name = currentPostData[tableView.indexPathForSelectedRow!.row].getName()
+            let ingredient = currentPostData[tableView.indexPathForSelectedRow!.row].getIngredient()
+            let method = currentPostData[tableView.indexPathForSelectedRow!.row].getMethod()
+            let category = currentPostData[tableView.indexPathForSelectedRow!.row].getCategory()
+            searchCategory.menu = name
+            searchCategory.ingredient = ingredient
+            searchCategory.method = method
+            searchCategory.keepCategory = category
+        }
     }
 }

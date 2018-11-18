@@ -20,8 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        Theme.current = DefaultTheme()
+        //Override point for customization after application launch.
+        
         FirebaseApp.configure()
  
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
@@ -31,38 +31,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         UINavigationBar.appearance().barTintColor = UIColor(red: 0.9, green: 0.6, blue: 0.6, alpha: 0.8)
         
           let authListener = Auth.auth().addStateDidChangeListener { auth, user in
-
               let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
             if user != nil {
-
                 UserService.observeUserProfile(user!.uid) { userProfile in
                     UserService.currentUserProfile = userProfile
                 }
-
-                //
                 let controller = storyboard.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
                 self.window?.rootViewController = controller
                 self.window?.makeKeyAndVisible()
-
-            
             } else {
-
                 UserService.currentUserProfile = nil
-
                 // menu screen
                 let controller = storyboard.instantiateViewController(withIdentifier: "InsertMenuScreen") as! InsertMenuScreen
                 self.window?.rootViewController = controller
                 self.window?.makeKeyAndVisible()
             }
         }
-
         return true
       }
 
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if let err = error {
-            print("Failed to log into Google: ",err)
+            print("Failed to log into Google: ", err)
             return
         }
         print("Successfully logged into Google", user)
@@ -86,7 +77,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         GIDSignIn.sharedInstance().handle(url,
                                           sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
                                           annotation: options[UIApplicationOpenURLOptionsKey.annotation])
-        
         return handled
     }
 

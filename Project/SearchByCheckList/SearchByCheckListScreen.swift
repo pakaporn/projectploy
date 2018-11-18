@@ -13,7 +13,6 @@ class SearchByCheckListScreen: BaseMenuController, UITableViewDelegate, UITableV
     @IBOutlet weak var tableView: UITableView!
     
     let ingredientImageView: [UIImage] = [
-        
         UIImage(named: "chicken")!,
         UIImage(named: "chop")!,
         UIImage(named: "fish")!,
@@ -26,7 +25,7 @@ class SearchByCheckListScreen: BaseMenuController, UITableViewDelegate, UITableV
         UIImage(named: "cabbage")!
     ]
     
-    var tasks: [Tasks] = [Tasks(name: "ไก่"),Tasks(name: "หมู"),Tasks(name: "ปลา"),Tasks(name: "ไข่ไก่"),Tasks(name: "ไข่เป็ด"),Tasks(name: "พริก"),Tasks(name: "มะนาว"),Tasks(name: "ใบกระเพรา"),Tasks(name: "ผักชี"),Tasks(name: "กะหล่ำปลี")]
+    var tasks: [Tasks] = [Tasks(name: "ไก่"), Tasks(name: "หมู"), Tasks(name: "ปลา"), Tasks(name: "ไข่ไก่"), Tasks(name: "ไข่เป็ด"), Tasks(name: "พริก"), Tasks(name: "มะนาว"), Tasks(name: "ใบกระเพรา"), Tasks(name: "ผักชี"), Tasks(name: "กะหล่ำปลี")]
     var keepTaskName: [String] = []
     
     override func viewDidLoad() {
@@ -39,7 +38,6 @@ class SearchByCheckListScreen: BaseMenuController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath) as! CheckListCell
-        
         cell.taskNameLabel.text = tasks[indexPath.row].name
         cell.checkImage.image = ingredientImageView[indexPath.item]
         
@@ -49,11 +47,9 @@ class SearchByCheckListScreen: BaseMenuController, UITableViewDelegate, UITableV
         } else {
             cell.checkBoxOutlet.setBackgroundImage(#imageLiteral(resourceName: "checkBoxOUTLINE "), for: UIControlState.normal)
         }
-        
         cell.delegate = self
         cell.tasks = tasks
         cell.indexP = indexPath.row
-        
         return cell
     }
     
@@ -62,7 +58,6 @@ class SearchByCheckListScreen: BaseMenuController, UITableViewDelegate, UITableV
         if segue.identifier == iden {
             let searchByCheckList = segue.destination as! SearchByCheckList
             searchByCheckList.keepTaskNamee = keepTaskName
-            
         }
     }
     

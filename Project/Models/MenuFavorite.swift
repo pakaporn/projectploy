@@ -10,15 +10,16 @@ import Foundation
 import Firebase
 
 class MenuFavorite {
+    
     var menu: String = ""
     var ingredient: String = ""
     var method: String = ""
     var category: String = ""
+    var photoURL = ""
     var numberOfLikes = 0
     let ref: DatabaseReference!
     
-    
-    init(menu: String,ingredient: String,method: String,category: String) {
+    init(menu: String, ingredient: String, method: String, category: String) {
         self.menu = menu
         self.ingredient = ingredient
         self.method = method
@@ -32,7 +33,8 @@ class MenuFavorite {
             menu =  value["menu"] as! String
             ingredient =  value["ingredient"] as! String
             method =  value["method"] as! String
-           // category = value["category"] as! String
+            category = value["category"] as! String
+            photoURL = value["photoURL"] as! String
            // numberOfLikes = value["numberOfLikes"] as! Int
         }
     }
@@ -62,6 +64,8 @@ class MenuFavorite {
             "menu": menu,
             "ingredient": ingredient,
             "method": method,
+            "category": category,
+            "photoURL": photoURL
             //"numberOfLikes": numberOfLikes
         ]
     }

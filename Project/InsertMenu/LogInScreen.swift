@@ -13,13 +13,11 @@ class LogInScreen: BaseMenuController {
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet var loginGmailButton: UIButton!
     @IBOutlet var loginFacebookButton: UIButton!
-    
 //    var loginGmail: RoundedWhiteButton!
 //    var activityView: UIActivityIndicatorView!
-//
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         loginGmailButton.layer.cornerRadius = loginGmailButton.bounds.height/2
         loginFacebookButton.layer.cornerRadius = loginFacebookButton.bounds.height/2
         
@@ -44,7 +42,6 @@ class LogInScreen: BaseMenuController {
 //        view.addSubview(activityView)
         self.navigationController?.hidesBarsOnSwipe = true
     }
-    
 //    @objc func menuView() {
 //        //setLoginGmail(enabled: false)
 //        loginGmail.setTitle("", for: .normal)

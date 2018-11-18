@@ -22,7 +22,6 @@ class SearchByCheckListCell: UITableViewCell {
             storyLabel.text = menufood.text
             likeButton.setTitle("😍 \(menufood.numberOfLikes)", for: [])
             likeButton.layer.cornerRadius = likeButton.bounds.height/2
-            
         }
     }
     
@@ -32,5 +31,4 @@ class SearchByCheckListCell: UITableViewCell {
         likeButton.setTitle("😍 \(menufood.numberOfLikes)", for: [])
         likeButton.setTitleColor(likeColor, for: [])
     }
-
 }

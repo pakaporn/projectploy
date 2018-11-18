@@ -17,7 +17,6 @@ class MenuViewController: BaseMenuController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
         logoImageView.layer.cornerRadius = logoImageView.bounds.height/4
         view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
     }

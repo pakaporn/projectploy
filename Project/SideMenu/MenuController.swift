@@ -13,14 +13,11 @@ class MenuController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet var profileImage: UIImageView!
     @IBOutlet var userName: UILabel!
     
-    var menuOptionsLogin = ["Search", "SearchByCategory","SearchByCheckList","MenuPopular", "InsertMenu","MenuFavourite","Calender", "LogOut"]
-    
-    var menuOptionsNotLogin = ["Search", "SearchByCategory","SearchByCheckList", "Login"]
-    
+    var menuOptionsLogin = ["Search", "SearchByCategory", "SearchByCheckList", "MenuPopular", "InsertMenu", "MenuFavourite", "Calender", "BuyIngredient", "LogOut"]
+    var menuOptionsNotLogin = ["Search", "SearchByCategory", "SearchByCheckList", "Login"]
     let userRef = Database.database().reference().child("users")
     
     let optionsImageViewLogin: [UIImage] = [
-        
         UIImage(named: "search")!,
         UIImage(named: "searchcategory")!,
         UIImage(named: "searchchecklist")!,
@@ -28,17 +25,16 @@ class MenuController: UIViewController, UITableViewDataSource, UITableViewDelega
         UIImage(named: "insert")!,
         UIImage(named: "menufavourite")!,
         UIImage(named: "calender")!,
+        UIImage(named: "buy")!,
         UIImage(named: "logout")!
     ]
     
     let optionsImageViewNotLogin: [UIImage] = [
-        
         UIImage(named: "search")!,
         UIImage(named: "searchcategory")!,
         UIImage(named: "searchchecklist")!,
         UIImage(named: "logout")!
     ]
-    
     var optionsImageView: [UIImage] = []
     var menuOptions: [String] = []
     //var profileImageView: UIImageView!
@@ -46,15 +42,12 @@ class MenuController: UIViewController, UITableViewDataSource, UITableViewDelega
     private func checkIfUserIsSignedIn() {
         Auth.auth().addStateDidChangeListener { (auth, user) in
             if user != nil {
-                print(user!.photoURL)
-                print("Yes this is what are you looking for.")
                 self.menuOptions = self.menuOptionsLogin
                 self.optionsImageView = self.optionsImageViewLogin
                 //self.profileImageView = self.profileImage
             } else {
                 self.menuOptions = self.menuOptionsNotLogin
                 self.optionsImageView = self.optionsImageViewNotLogin
-            
             }
         }
     }
@@ -68,7 +61,6 @@ class MenuController: UIViewController, UITableViewDataSource, UITableViewDelega
         profileImage.layer.borderWidth = 1.0
         profileImage.clipsToBounds = true
         view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
-    
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -81,7 +73,6 @@ class MenuController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: MenuCell = tableView.dequeueReusableCell(withIdentifier: "MenuCell") as! MenuCell
-        
         cell.optionName.text = menuOptions[indexPath.row]
         cell.optionImage.image = optionsImageView[indexPath.item]
         //cell.optionImage.image = UIImage(named: menuOptions[indexPath.row])
@@ -94,11 +85,12 @@ class MenuController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func set() {
-        
         Auth.auth().addStateDidChangeListener { (auth, user) in
             if user != nil {
-                ImageService.getImage(withURL: (user?.photoURL)!  ) { image, url in
-                    self.profileImage.image = image
+                if user?.photoURL != nil {
+                    ImageService.getImage(withURL: (user?.photoURL)!  ) { image, url in
+                        self.profileImage.image = image
+                    }
                 }
                 self.userName.text = user?.displayName
             }
@@ -111,6 +103,4 @@ class MenuController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: menuOptions[indexPath.row], sender: self)
     }
-    
-   
 }

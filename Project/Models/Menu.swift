@@ -10,6 +10,7 @@ import Foundation
 import Firebase
 
 class Menu {
+    
     var text: String = ""
     var ingredient: String = ""
     var method: String = ""

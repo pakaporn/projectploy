@@ -15,6 +15,7 @@ target 'Project' do
    pod 'FBSDKShareKit'
    pod 'FBSDKLoginKit'
    pod 'GoogleSignIn'
+   pod 'SwiftyJSON'
    pod 'JTAppleCalendar', '~> 7.0'
 
   target 'ProjectTests' do

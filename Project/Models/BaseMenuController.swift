@@ -16,9 +16,5 @@ class BaseMenuController: UIViewController {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icons25"), style: UIBarButtonItemStyle.plain, target: self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)))
 //        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
 //        self.revealViewController().rearViewRevealWidth = 240
-
     }
-
-    
-
 }

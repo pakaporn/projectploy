@@ -10,8 +10,7 @@ import UIKit
 
 class RoundedWhiteButton: UIButton {
     
-    var highlightedColor = UIColor.white
-    {
+    var highlightedColor = UIColor.white {
         didSet {
             if isHighlighted {
                 backgroundColor = highlightedColor
@@ -19,8 +18,7 @@ class RoundedWhiteButton: UIButton {
         }
     }
     
-    var defaultColor = UIColor.clear
-    {
+    var defaultColor = UIColor.clear {
         didSet {
             if !isHighlighted {
                 backgroundColor = defaultColor
@@ -46,7 +44,6 @@ class RoundedWhiteButton: UIButton {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
     }
     
     override func awakeFromNib() {

@@ -6,35 +6,44 @@
 //  Copyright © 2561 Pakaporn. All rights reserved.
 ///
 
-import Foundation
 import UIKit
 import Firebase
 
-class InsertMyMenu: UIViewController, UITextViewDelegate {
+class InsertMyMenu: BaseMenuController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    @IBOutlet weak var textView:UITextView!
-    @IBOutlet weak var placeHolderLabel: UILabel!
+    @IBOutlet var menuTextField: UITextField!
+    @IBOutlet var ingredientTextView: UITextView!
+    @IBOutlet var methodTextView: UITextView!
+    @IBOutlet var imageView: UIImageView!
+    @IBOutlet weak var category: UIPickerView!
+    @IBOutlet var saveMenu: UIButton!
+    @IBOutlet var camera: UIButton!
     
-    @IBOutlet weak var cancelButton: UIBarButtonItem!
-    @IBOutlet weak var doneButton: UIButton!
-    
+    var imagePicker: UIImagePickerController!
+    var SelectedKindOfFood = "แกง"
+    let kindOfFood = ["แกง","ผัด","ต้ม","ทอด","อบ-ตุ๋น","นึ่ง","ยำ","น้ำพริก"]
     @IBAction func handlePostButton() {
-        
+        guard let image = imageView.image else { return }
         guard let userProfile = UserService.currentUserProfile else { return }
+        self.uploadProfileImage(image) { url in
         // Firebase code here
-        
         let postRef = Database.database().reference().child("posts").childByAutoId()
-        
         let postObject = [
-            "author": [
+            "User": [
                 "uid": userProfile.uid,
                 "username": userProfile.username,
                 "photoURL": userProfile.photoURL.absoluteString
             ],
-            "text": textView.text,
+            "menu": self.menuTextField.text ?? "",
+            "ingredient": self.ingredientTextView.text,
+            "method": self.methodTextView.text,
+            "kindOFfood": self.SelectedKindOfFood,
+            "photoURL": url?.absoluteString ?? "",
+            "numberOfLikes": 0,
             "timestamp": [".sv":"timestamp"]
             ] as [String:Any]
-        
+
+        print(postObject)
         postRef.setValue(postObject, withCompletionBlock: { error, ref in
             if error == nil {
                 self.dismiss(animated: true, completion: nil)
@@ -42,43 +51,87 @@ class InsertMyMenu: UIViewController, UITextViewDelegate {
                 // Handle the error
             }
         })
+        }
     }
     
-    @IBAction func handleCancelButton() {
-        self.dismiss(animated: true, completion: nil)
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
     }
     
-    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
-        textView.resignFirstResponder()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25, execute: {
-            super.dismiss(animated: flag, completion: completion)
-        })
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let pickedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
+            self.imageView.image = pickedImage
+        }
+        picker.dismiss(animated: true, completion: nil)
     }
+
     
+    @objc func openImagePicker(_ sender: Any) {
+        // Open Image Picker
+        self.present(imagePicker, animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        category.dataSource = self
+        category.delegate = self
+        let imageTap = UITapGestureRecognizer(target: self, action: #selector(openImagePicker))
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(imageTap)
+        imageView.layer.cornerRadius = imageView.bounds.height / 2
+        imageView.clipsToBounds = true
+        //tapToChangeProfileButton.addTarget(self, action: #selector(openImagePicker), for: .touchUpInside)
         
-        cancelButton.tintColor = secondaryColor
+        imagePicker = UIImagePickerController()
+        imagePicker.allowsEditing = true
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.delegate = self
+    }
+    
+    func uploadProfileImage(_ image: UIImage, completion: @escaping ((_ url: URL?)->())) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let storageRef = Storage.storage().reference().child("photoURL")
         
-        doneButton.backgroundColor = secondaryColor
-        doneButton.layer.cornerRadius = doneButton.bounds.height / 2
-        doneButton.clipsToBounds = true
+        guard let imageData = UIImageJPEGRepresentation(image, 0.75) else { return }
+        let metaData = StorageMetadata()
+        metaData.contentType = "image/jpg"
         
-        textView.delegate = self
-        
+        storageRef.putData(imageData, metadata: metaData) { metaData, error in
+            if error == nil, metaData != nil {
+                if let url = metaData?.downloadURL() {
+                    completion(url)
+                } else {
+                    completion(nil)
+                }
+                // success!
+            } else {
+                // failed
+                completion(nil)
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        textView.becomeFirstResponder()
-        
+        //textView.becomeFirstResponder()
         // Remove the nav shadow underline
         navigationController?.navigationBar.shadowImage = UIImage()
     }
     
-    func textViewDidChange(_ textView: UITextView) {
-        placeHolderLabel.isHidden = !textView.text.isEmpty
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return kindOfFood.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        SelectedKindOfFood = kindOfFood[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return kindOfFood[row]
     }
 }
 

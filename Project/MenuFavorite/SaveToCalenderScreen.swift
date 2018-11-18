@@ -7,17 +7,24 @@
 //
 
 import UIKit
+import Firebase
 
 class SaveToCalenderScreen: UIViewController {
     
     @IBOutlet weak var inputTextField: UITextField!
     @IBOutlet weak var mealTextField: UITextField!
-    
     private var datePicker: UIDatePicker!
     
+    var menu = ""
+    var ingredient = ""
+    var method = ""
+    var photoURL = ""
+    var keepCategory = ""
+    var keepMeals = ""
+    var KeepDate = ""
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         datePicker = UIDatePicker()
         datePicker?.datePickerMode = .date
         datePicker?.addTarget(self, action: #selector(SaveToCalenderScreen.dateChanged(datePicker:)), for: .valueChanged)
@@ -64,15 +71,13 @@ class SaveToCalenderScreen: UIViewController {
     func createToolBar() {
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
-        
         //toolBar.barTintColor = .black
         toolBar.tintColor = .black
         
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(SaveToCalenderScreen.dismissKeyboard))
-        
         toolBar.setItems([doneButton], animated: false)
         toolBar.isUserInteractionEnabled = true
-        
+
         mealTextField.inputAccessoryView = toolBar
         inputTextField.inputAccessoryView = toolBar
     }
@@ -80,7 +85,6 @@ class SaveToCalenderScreen: UIViewController {
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
-    
 }
 
 extension SaveToCalenderScreen: UIPickerViewDelegate,UIPickerViewDataSource {
@@ -116,8 +120,33 @@ extension SaveToCalenderScreen: UIPickerViewDelegate,UIPickerViewDataSource {
         label.textAlignment = .center
         label.font = label.font.withSize(20)
         label.text = meals[row]
-        
         return label
+    }
+    
+    @IBAction func handlePostButton() {
+            // Firebase code here
+            let postRef = Database.database().reference().child("menuCalendar")
+            let key = postRef.childByAutoId().key
+            let postObject = [
+                "id": key,
+                "menu": self.menu ,
+                "ingredient": self.ingredient,
+                "method": self.method,
+                "kindOFfood": self.keepCategory,
+                "photoURL": photoURL,
+                "date" : inputTextField.text ?? "",
+                "meals" : mealTextField.text ?? ""
+                ] as [String:Any]
+            
+            //print(postObject)
+            postRef.child(key).setValue(postObject, withCompletionBlock: { error, ref in
+                if error == nil {
+                    self.dismiss(animated: true, completion: nil)
+                } else {
+                    // Handle the error
+                }
+            })
+        
     }
 }
 

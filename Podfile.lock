@@ -73,6 +73,7 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
+  - SwiftyJSON (4.0.0)
 
 DEPENDENCIES:
   - FBSDKCoreKit
@@ -84,6 +85,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - GoogleSignIn
   - JTAppleCalendar (~> 7.0)
+  - SwiftyJSON
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -105,6 +107,7 @@ SPEC REPOS:
     - JTAppleCalendar
     - leveldb-library
     - nanopb
+    - SwiftyJSON
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
@@ -125,7 +128,8 @@ SPEC CHECKSUMS:
   JTAppleCalendar: df26e97d7ba5b42c8a5ad4eabdccb4843878d40e
   leveldb-library: 44ef425bfde64f5b41daef86b38db2d13edbbee1
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: 183f2cc66d41bd6bf3b51465823e692ba6f35d01
+PODFILE CHECKSUM: da445afbdd0dc39dfc58af64b4ea630be6c34b9a
 
 COCOAPODS: 1.5.2

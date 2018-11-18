@@ -18,7 +18,6 @@ class LogOutScreen: BaseMenuController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         set()
         profileImage.layer.cornerRadius = profileImage.bounds.height / 2
         profileImage.layer.borderColor = UIColor.black.cgColor
@@ -31,22 +30,20 @@ class LogOutScreen: BaseMenuController {
     }
     
     func set() {
-        
         Auth.auth().addStateDidChangeListener { (auth, user) in
             if user != nil {
-                ImageService.getImage(withURL: (user?.photoURL)!  ) { image, url in
-                    self.profileImage.image = image
+                if user?.photoURL != nil {
+                    ImageService.getImage(withURL: (user?.photoURL)!  ) { image, url in
+                        self.profileImage.image = image
+                    }
                 }
                 self.userName.text = user?.displayName
             }
         }
-        
-        
         //        usernameLabel.text = post.author.username
         //        postTextLabel.text = post.text
         //        subtitleLabel.text = post.createdAt.calenderTimeSinceNow()
     }
-    
     
     @IBAction func handleLogout(_ sender:Any) {
         try! Auth.auth().signOut()
@@ -58,6 +55,4 @@ class LogOutScreen: BaseMenuController {
             let logOutScreen = segue.destination as! LogOutScreen
         }
     }
-    
-    
 }

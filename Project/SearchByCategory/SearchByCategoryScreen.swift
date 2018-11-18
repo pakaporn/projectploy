@@ -17,7 +17,6 @@ class SearchByCategoryScreen: BaseMenuController, UICollectionViewDelegate, UICo
     var keepCategory = ""
     
     let categoryImages: [UIImage] = [
-        
         UIImage(named: "แกง")!,
         UIImage(named: "ผัด")!,
         UIImage(named: "ต้ม")!,
@@ -30,10 +29,8 @@ class SearchByCategoryScreen: BaseMenuController, UICollectionViewDelegate, UICo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         collectionView.delegate = self
         collectionView.dataSource = self
-        
         var layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.sectionInset = UIEdgeInsetsMake(0, 5, 0, 5)
         layout.minimumInteritemSpacing = 5
@@ -88,16 +85,13 @@ class SearchByCategoryScreen: BaseMenuController, UICollectionViewDelegate, UICo
 //            print(keepCategory)
 //        }
 //    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let iden = "SearchByCategory"
         if segue.identifier == iden {
             let searchByCategory = segue.destination as! SearchByCategory
             searchByCategory.keepTaskNamee = keepCategory
-            
         }
     }
-    
 }
 
 

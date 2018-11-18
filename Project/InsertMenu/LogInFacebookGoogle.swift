@@ -17,7 +17,6 @@ class LogInFacebookGoogle: BaseMenuController, FBSDKLoginButtonDelegate, GIDSign
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupFacebookButtons()
         setupGoogleButtons()
         
@@ -30,7 +29,6 @@ class LogInFacebookGoogle: BaseMenuController, FBSDKLoginButtonDelegate, GIDSign
 //        view.addSubview(loginFacebookButton)
 //        loginFacebookButton.frame = CGRect(x: 40, y: 100, width: view.frame.width - 80, height: 50)
 //        loginFacebookButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        
         loginFacebookButton.delegate = self
         loginFacebookButton.readPermissions = ["email","public_profile"]
         
@@ -41,16 +39,13 @@ class LogInFacebookGoogle: BaseMenuController, FBSDKLoginButtonDelegate, GIDSign
         customFacebookButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         customFacebookButton.setTitleColor(.white, for: .normal)
         view.addSubview(customFacebookButton)
-        
         customFacebookButton.addTarget(self, action: #selector(handleCustomFBLogin), for: .touchUpInside)
-        
     }
     
     fileprivate func setupGoogleButtons() {
         //let googleButton = GIDSignInButton()
         //googleButton.frame = CGRect(x: 40, y: 160, width: view.frame.width - 80, height: 50)
         //view.addSubview(googleButton)
-
         let customGoogleButton = UIButton(type: .system)
         customGoogleButton.frame = CGRect(x: 40, y: 220, width: view.frame.width - 80, height: 50)
         customGoogleButton.setBackgroundColor(color: .orange, forUIControlState: .normal)
@@ -118,6 +113,4 @@ class LogInFacebookGoogle: BaseMenuController, FBSDKLoginButtonDelegate, GIDSign
             let logInFacebook = segue.destination as! LogInFacebookGoogle
         }
     }
-    
-    
 }

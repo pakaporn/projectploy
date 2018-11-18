@@ -22,14 +22,12 @@ class MenuFavoriteScreen: UITableViewController , UISearchBarDelegate, UITextVie
     var currentPostData = [MenuFavorite]()
     var ref: DatabaseReference?
     var databaseHandle: DatabaseHandle?
-    
     // 1. create a reference ot the db location you want to download
     let menuRef = Database.database().reference().child("menuFavorite")
     var mymenu = [MenuFavorite]()
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         // download menu
         menuRef.observe(.value, with: { (snapshot) in
             self.mymenu.removeAll()
@@ -43,7 +41,6 @@ class MenuFavoriteScreen: UITableViewController , UISearchBarDelegate, UITextVie
                     self.currentPostData = self.postData
                     self.tableView.reloadData()
                 }
-                
             }
             self.tableView.reloadData()
         })
@@ -65,11 +62,10 @@ class MenuFavoriteScreen: UITableViewController , UISearchBarDelegate, UITextVie
 //        self.revealViewController().rearViewRevealWidth = 240
         
         self.navigationController?.hidesBarsOnSwipe = true
-        
     }
     
     func searchBarSetUp(){
-        let searchBar = UISearchBar(frame: CGRect(x: 0,y: 0,width:(UIScreen.main.bounds.width),height: 70))
+        let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width:(UIScreen.main.bounds.width), height: 70))
         searchBar.showsScopeBar = true
         searchBar.scopeButtonTitles = ["ค้นหาโดยชื่อเมนูอาหาร", "ค้นหาโดยวัตถุดิบ"]
         searchBar.selectedScopeButtonIndex = 0
@@ -81,34 +77,32 @@ class MenuFavoriteScreen: UITableViewController , UISearchBarDelegate, UITextVie
         if searchText.isEmpty{
             currentPostData = postData
             self.tableView.reloadData()
-        }else{
+        } else {
             filterTableView(ind: searchBar.selectedScopeButtonIndex,text: searchText)
         }
         self.tableView.reloadData()
-        
     }
     
     func filterTableView(ind: Int, text: String){
-        switch ind  {
+        switch ind {
         case selectedScopeMenuFavorite.name.rawValue:
             currentPostData = postData.filter({ (mod) -> Bool in
-                return mod.getName().lowercased().contains(text.lowercased())
+                return mod.menu.lowercased().contains(text.lowercased())
             })
             self.tableView.reloadData()
         default:
             print("No Data")
         }
         
-        switch ind  {
+        switch ind {
         case selectedScopeMenuFavorite.ingredients.rawValue:
             currentPostData = postData.filter({ (mod) -> Bool in
-                return mod.getIngredient().lowercased().contains(text.lowercased())
+                return mod.ingredient.lowercased().contains(text.lowercased())
             })
             self.tableView.reloadData()
         default:
             print("No Data")
         }
-        
 //       switch ind  {
 //        case selectedScopeMenuFavorite.category.rawValue:
 //            currentPostData = postData.filter({ (mod) -> Bool in
@@ -118,8 +112,6 @@ class MenuFavoriteScreen: UITableViewController , UISearchBarDelegate, UITextVie
 //        default:
 //            print("No Data")
 //        }
-        
-        
     }
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -131,7 +123,6 @@ class MenuFavoriteScreen: UITableViewController , UISearchBarDelegate, UITextVie
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        // TODO: return the stories count
         return currentPostData.count
     }
     
@@ -147,15 +138,18 @@ class MenuFavoriteScreen: UITableViewController , UISearchBarDelegate, UITextVie
         let iden = "MenuFavorite"
         if segue.identifier == iden {
             let myMenuDetail = segue.destination as! MenuFavoriteDetail
-            let name = currentPostData[tableView.indexPathForSelectedRow!.row].getName()
-            let ingredient = currentPostData[tableView.indexPathForSelectedRow!.row].getIngredient()
-            let method = currentPostData[tableView.indexPathForSelectedRow!.row].getMethod()
+            let name = currentPostData[tableView.indexPathForSelectedRow!.row].menu
+            let ingredient = currentPostData[tableView.indexPathForSelectedRow!.row].ingredient
+            let method = currentPostData[tableView.indexPathForSelectedRow!.row].method
+            let photoURL = currentPostData[tableView.indexPathForSelectedRow!.row].photoURL
+            let category = currentPostData[tableView.indexPathForSelectedRow!.row].category
             myMenuDetail.menu = name
             myMenuDetail.ingredient = ingredient
             myMenuDetail.method = method
+            myMenuDetail.photoURL = photoURL
+            myMenuDetail.keepCategory = category
         }
     }
-    
 }
 
 

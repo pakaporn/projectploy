@@ -20,7 +20,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
         
         continueButton = RoundedWhiteButton(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
@@ -39,7 +38,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         activityView.color = secondaryColor
         activityView.frame = CGRect(x: 0, y: 0, width: 50.0, height: 50.0)
         activityView.center = continueButton.center
-        
         view.addSubview(activityView)
         
         emailField.delegate = self
@@ -47,8 +45,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         emailField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         passwordField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -90,9 +86,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        // Resigns the target textField and assigns the next textField in the form.
-        
         switch textField {
         case emailField:
             emailField.resignFirstResponder()
@@ -143,7 +136,5 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         setContinueButton(enabled: true)
         continueButton.setTitle("Continue", for: .normal)
         activityView.stopAnimating()
-       
     }
-    
 }

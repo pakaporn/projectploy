@@ -10,6 +10,7 @@ import Foundation
 import Firebase
 
 class MenuDetail {
+    
     var id: String = ""
     var fromId: String?
     var toId: String?
@@ -21,8 +22,7 @@ class MenuDetail {
     var numberOfLikes = 0
     let ref: DatabaseReference!
     
-    
-    init(fromId: String, toId: String, id: String, text: String,ingredient: String,method: String,category: String) {
+    init(fromId: String, toId: String, id: String, text: String, ingredient: String, method: String, category: String) {
         self.id = id
         self.fromId = fromId
         self.toId = toId
