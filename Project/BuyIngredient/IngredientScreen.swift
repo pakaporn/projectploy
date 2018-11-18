@@ -12,20 +12,12 @@ class IngredientScreen: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -44,7 +36,6 @@ class IngredientScreen: UITableViewController {
         // cell.menufood = menufood
         return cell
     }
-    
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        let iden = "SelectMenu"
 //        if segue.identifier == iden {
@@ -59,5 +50,4 @@ class IngredientScreen: UITableViewController {
 //            searchMenu.keepCategory = category
 //        }
 //    }
-
 }

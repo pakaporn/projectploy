@@ -78,10 +78,6 @@ class MenuPopularDetail: BaseMenuController, UIPickerViewDelegate, UIPickerViewD
         return 1
     }
     
-    //    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-    //        SelectedKindOfFood = kindOfFood[row]
-    //    }
-    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return keepCategory
     }

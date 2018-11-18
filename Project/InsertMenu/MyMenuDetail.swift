@@ -56,8 +56,6 @@ class MyMenuDetail: BaseMenuController, UIPickerViewDelegate, UIPickerViewDataSo
         category.dataSource = self
         category.delegate = self
         getData()
-//        ingredientTextView.text = ingredient
-//        methodTextView.text = method
         view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
     }
     
@@ -115,7 +113,6 @@ class MyMenuDetail: BaseMenuController, UIPickerViewDelegate, UIPickerViewDataSo
         })
     }
     
-    
     @IBAction func gotoEdit(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier:"EditMyMenu") as! EditMyMenu
         self.present(vc, animated: true, completion: nil)
@@ -128,10 +125,6 @@ class MyMenuDetail: BaseMenuController, UIPickerViewDelegate, UIPickerViewDataSo
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return 1
     }
-    
-//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        SelectedKindOfFood = kindOfFood[row]
-//    }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return getCategory

@@ -10,6 +10,7 @@ import Foundation
 import Firebase
 
 class MenuCalender {
+    
     var id: String = ""
     var menu: String = ""
     var ingredient: String = ""
@@ -39,7 +40,6 @@ class MenuCalender {
             photoURL = value["photoURL"] as! String
             date = value["date"] as! String
             meals = value["meals"] as! String
-            
             // numberOfLikes = value["numberOfLikes"] as! Int
         }
     }

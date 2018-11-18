@@ -40,9 +40,6 @@ class LogOutScreen: BaseMenuController {
                 self.userName.text = user?.displayName
             }
         }
-        //        usernameLabel.text = post.author.username
-        //        postTextLabel.text = post.text
-        //        subtitleLabel.text = post.createdAt.calenderTimeSinceNow()
     }
     
     @IBAction func handleLogout(_ sender:Any) {

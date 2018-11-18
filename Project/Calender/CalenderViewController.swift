@@ -108,20 +108,6 @@ class CalenderViewController: UIViewController, UICollectionViewDataSource, UICo
     func GetStartDateDayP0sition() {
         switch direction {
         case 0:
-            //            switch day {
-            //            case 1...7:
-            //                numberOfEmptyBox = weekday - day
-            //            case 8...14:
-            //                numberOfEmptyBox = weekday - day - 7
-            //            case 15...21:
-            //                numberOfEmptyBox = weekday - day - 14
-            //            case 22...28:
-            //                numberOfEmptyBox = weekday - day - 21
-            //            case 29...31:
-            //                numberOfEmptyBox = weekday - day - 28
-            //            default:
-            //                break
-            //            }
             numberOfEmptyBox = weekday
             dayCounter = day
             while dayCounter > 0 {

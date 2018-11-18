@@ -56,7 +56,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         profileImageView.addGestureRecognizer(imageTap)
         profileImageView.layer.cornerRadius = profileImageView.bounds.height / 2
         profileImageView.clipsToBounds = true
-        //tapToChangeProfileButton.addTarget(self, action: #selector(openImagePicker), for: .touchUpInside)
         
         imagePicker = UIImagePickerController()
         imagePicker.allowsEditing = true

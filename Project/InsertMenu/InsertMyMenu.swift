@@ -64,7 +64,6 @@ class InsertMyMenu: BaseMenuController, UIPickerViewDelegate, UIPickerViewDataSo
         }
         picker.dismiss(animated: true, completion: nil)
     }
-
     
     @objc func openImagePicker(_ sender: Any) {
         // Open Image Picker
@@ -78,10 +77,8 @@ class InsertMyMenu: BaseMenuController, UIPickerViewDelegate, UIPickerViewDataSo
         let imageTap = UITapGestureRecognizer(target: self, action: #selector(openImagePicker))
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(imageTap)
-        imageView.layer.cornerRadius = imageView.bounds.height / 2
+        imageView.layer.cornerRadius = imageView.bounds.height / 8
         imageView.clipsToBounds = true
-        //tapToChangeProfileButton.addTarget(self, action: #selector(openImagePicker), for: .touchUpInside)
-        
         imagePicker = UIImagePickerController()
         imagePicker.allowsEditing = true
         imagePicker.sourceType = .photoLibrary
@@ -113,8 +110,6 @@ class InsertMyMenu: BaseMenuController, UIPickerViewDelegate, UIPickerViewDataSo
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //textView.becomeFirstResponder()
-        // Remove the nav shadow underline
         navigationController?.navigationBar.shadowImage = UIImage()
     }
     

@@ -18,9 +18,7 @@ class UserProfile {
         self.username = username
         self.photoURL = photoURL
     }
-    
-    
-    
+
     func getUid() -> String {
         return uid
     }

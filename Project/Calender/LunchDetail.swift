@@ -27,7 +27,6 @@ class LunchDetail: BaseMenuController, UIPickerViewDelegate, UIPickerViewDataSou
     var keepCategory = ""
     var photoURL = ""
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setImage()
@@ -73,10 +72,6 @@ class LunchDetail: BaseMenuController, UIPickerViewDelegate, UIPickerViewDataSou
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return 1
     }
-    
-    //    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-    //        SelectedKindOfFood = kindOfFood[row]
-    //    }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return keepCategory

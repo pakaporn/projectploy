@@ -1,6 +1,8 @@
+
 import Foundation
 import Firebase
 import SwiftyJSON
+
 class Post {
     
     var user = UserProfileStruct()
@@ -43,7 +45,6 @@ class Post {
         self.timestamp = value["timestamp"] as! Double
         self.numberOfLikes = value["numberOfLikes"] as! Int
         
-        
 //        let locationDict = userDict["location"] as! [String: Any]
 //        self.loc.coords = locationDict["coords"] as? String
 //        self.loc.name = locationDict["name"] as? String
@@ -53,30 +54,7 @@ class Post {
     func getMenuName() -> String {
         return menu
     }
-//
-//    func getIngredient() -> String {
-//        return ingredient
-//    }
-//
-//    func getMethod() -> String {
-//        return method
-//    }
-//
-//    func getKindOFfood() -> String {
-//        return kindOFfood
-//    }
-//
-//    func getPhotoURL() -> String {
-//        return photoURL
-//    }
-//
-//    func getUser() -> UserProfileStruct {
-//        return user
-//    }
-//
-//    func getCreateAt() -> Date{
-//        return createdAt
-//    }
+
 }
 extension Post {
     func like() {

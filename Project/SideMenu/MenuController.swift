@@ -13,7 +13,7 @@ class MenuController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet var profileImage: UIImageView!
     @IBOutlet var userName: UILabel!
     
-    var menuOptionsLogin = ["Search", "SearchByCategory", "SearchByCheckList", "MenuPopular", "InsertMenu", "MenuFavourite", "Calender", "BuyIngredient", "LogOut"]
+    var menuOptionsLogin = ["Search", "SearchByCategory", "SearchByCheckList", "MenuPopular", "InsertMenu", "MenuFavourite", "Calendar", "BuyIngredient", "LogOut"]
     var menuOptionsNotLogin = ["Search", "SearchByCategory", "SearchByCheckList", "Login"]
     let userRef = Database.database().reference().child("users")
     
@@ -95,9 +95,6 @@ class MenuController: UIViewController, UITableViewDataSource, UITableViewDelega
                 self.userName.text = user?.displayName
             }
         }
-//        usernameLabel.text = post.author.username
-//        postTextLabel.text = post.text
-//        subtitleLabel.text = post.createdAt.calenderTimeSinceNow()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

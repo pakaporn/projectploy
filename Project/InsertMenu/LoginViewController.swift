@@ -65,10 +65,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             return .lightContent
         }
     }
-    
-//    @IBAction func handleDismissButton(_ sender: Any) {
-//        self.dismiss(animated: false, completion: nil)
-//    }
 
     @objc func keyboardWillAppear(notification: NSNotification){
         let info = notification.userInfo!

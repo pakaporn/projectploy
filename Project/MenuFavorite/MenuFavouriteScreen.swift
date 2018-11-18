@@ -46,8 +46,7 @@ class MenuFavoriteScreen: UITableViewController , UISearchBarDelegate, UITextVie
         })
     }
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
         self.searchBarSetUp()
         
@@ -60,7 +59,6 @@ class MenuFavoriteScreen: UITableViewController , UISearchBarDelegate, UITextVie
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icons25"), style: .plain, target: self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)))
 //        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
 //        self.revealViewController().rearViewRevealWidth = 240
-        
         self.navigationController?.hidesBarsOnSwipe = true
     }
     
@@ -103,16 +101,8 @@ class MenuFavoriteScreen: UITableViewController , UISearchBarDelegate, UITextVie
         default:
             print("No Data")
         }
-//       switch ind  {
-//        case selectedScopeMenuFavorite.category.rawValue:
-//            currentPostData = postData.filter({ (mod) -> Bool in
-//                return mod.getCategory().lowercased().contains(text.lowercased())
-//            })
-//            self.tableView.reloadData()
-//        default:
-//            print("No Data")
-//        }
     }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }

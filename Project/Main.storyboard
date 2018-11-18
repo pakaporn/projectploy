@@ -175,7 +175,7 @@
                         <outlet property="userName" destination="v43-T0-ZRC" id="wC6-tj-RDp"/>
                         <segue destination="C8t-KJ-Req" kind="custom" identifier="InsertMenu" customClass="SWRevealViewControllerSeguePushController" id="Y20-OU-QoO"/>
                         <segue destination="KOf-NC-jSQ" kind="custom" identifier="MenuFavourite" customClass="SWRevealViewControllerSeguePushController" id="eLD-Eb-MKl"/>
-                        <segue destination="dql-lJ-HOR" kind="custom" identifier="Calender" customClass="SWRevealViewControllerSeguePushController" id="emK-h7-cch"/>
+                        <segue destination="dql-lJ-HOR" kind="custom" identifier="Calendar" customClass="SWRevealViewControllerSeguePushController" id="emK-h7-cch"/>
                         <segue destination="eLp-BC-KV6" kind="custom" identifier="LogOut" customClass="SWRevealViewControllerSeguePushController" id="UND-O8-RJz"/>
                         <segue destination="qh8-Sl-s6w" kind="custom" identifier="Search" customClass="SWRevealViewControllerSeguePushController" id="t0V-77-pCo"/>
                         <segue destination="kb0-NB-WMO" kind="custom" identifier="SearchByCategory" customClass="SWRevealViewControllerSeguePushController" id="oU2-B0-b7e"/>
@@ -316,7 +316,7 @@
             </objects>
             <point key="canvasLocation" x="2945" y="4181"/>
         </scene>
-        <!--Log Out Screen-->
+        <!--ออกจากระบบ-->
         <scene sceneID="qTi-pS-Pvm">
             <objects>
                 <viewController id="sNO-Bv-LMO" customClass="LogOutScreen" customModule="Project" customModuleProvider="target" sceneMemberID="viewController">
@@ -352,7 +352,7 @@
                         <viewLayoutGuide key="safeArea" id="zO2-a1-cq8"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="yu1-9E-Kxe">
+                    <navigationItem key="navigationItem" title="ออกจากระบบ" id="yu1-9E-Kxe">
                         <barButtonItem key="leftBarButtonItem" title="Item" id="TWq-bs-vl6"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -399,7 +399,7 @@
             </objects>
             <point key="canvasLocation" x="2914" y="152"/>
         </scene>
-        <!--Meal Screen-->
+        <!--เลือกมื้ออาหาร-->
         <scene sceneID="Y9F-1J-4A6">
             <objects>
                 <viewController id="8sx-J5-gZq" customClass="MealScreen" customModule="Project" customModuleProvider="target" sceneMemberID="viewController">
@@ -447,9 +447,14 @@
                         <color key="backgroundColor" red="1" green="0.79271754699999997" blue="0.72901242929999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="MQj-so-xig"/>
                     </view>
-                    <navigationItem key="navigationItem" id="LCg-cK-v4a">
+                    <navigationItem key="navigationItem" title="เลือกมื้ออาหาร" id="LCg-cK-v4a">
                         <barButtonItem key="leftBarButtonItem" title="Item" id="ju4-3n-h4j"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="BreakfastButton" destination="9vD-v1-iAj" id="Q0r-LA-fcJ"/>
+                        <outlet property="DinnerButton" destination="kFh-O7-7aZ" id="myz-2Z-5lZ"/>
+                        <outlet property="LunchButton" destination="8O1-Qw-kMd" id="ji1-Cg-lZA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3aB-he-oHc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1449,33 +1454,7 @@
             </objects>
             <point key="canvasLocation" x="-2300" y="294"/>
         </scene>
-        <!--เมนูของฉัน-->
-        <scene sceneID="nFt-ab-g1K">
-            <objects>
-                <viewController id="NEH-Qn-JzS" customClass="MyMenuScreen" customModule="Project" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="xau-Aw-p2W"/>
-                        <viewControllerLayoutGuide type="bottom" id="zwV-Sr-1N5"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="W7y-di-3yX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.99401418610000003" green="0.9461597343" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <viewLayoutGuide key="safeArea" id="N5t-NE-ga5"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="เมนูของฉัน" id="Uve-FL-io8">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="icons25" id="aE9-Bc-ebj"/>
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="SCr-09-RHS"/>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="menuButton" destination="aE9-Bc-ebj" id="KkA-8m-ht4"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JZx-lN-zKp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2945" y="-3030"/>
-        </scene>
-        <!--Menu Popular Screen-->
+        <!--เมนูอาหารยอดนิยม-->
         <scene sceneID="9il-5B-SbS">
             <objects>
                 <tableViewController id="XRK-wO-otz" customClass="MenuPopularScreen" customModule="Project" customModuleProvider="target" sceneMemberID="viewController">
@@ -1525,7 +1504,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="Kf1-YJ-ErB">
+                    <navigationItem key="navigationItem" title="เมนูอาหารยอดนิยม" id="Kf1-YJ-ErB">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="icons25" id="YsX-n9-svN"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -1702,17 +1681,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aJI-K9-PDi">
-                                <rect key="frame" x="48" y="112" width="187" height="128"/>
+                                <rect key="frame" x="94" y="101" width="187" height="128"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="0.6935049566" blue="0.9149126138" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ชื่อเมนูอาหาร" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uEV-R0-rRF">
-                                <rect key="frame" x="16" y="255" width="98" height="37"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KsR-7u-Mz7">
                                 <rect key="frame" x="122" y="300" width="237" height="121"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
@@ -1739,8 +1711,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="วัตถุดิบ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7lB-KX-Nni">
-                                <rect key="frame" x="0.0" y="300" width="91" height="26"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="วัตถุดิบ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7lB-KX-Nni">
+                                <rect key="frame" x="16" y="300" width="75" height="26"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -1766,10 +1738,17 @@
                                     <segue destination="gAF-jR-tpD" kind="show" id="lj9-0s-aPt"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="วิธีทำ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwg-Dy-jTn">
-                                <rect key="frame" x="-11" y="429" width="112" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="วิธีทำ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwg-Dy-jTn">
+                                <rect key="frame" x="16" y="429" width="85" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ชื่อเมนูอาหาร" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uEV-R0-rRF">
+                                <rect key="frame" x="16" y="255" width="98" height="37"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1793,7 +1772,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cGX-IR-7xD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4505" y="-2841"/>
+            <point key="canvasLocation" x="4504.8000000000002" y="-2841.2293853073465"/>
         </scene>
         <!--เมนูอาหาร-->
         <scene sceneID="RiT-Wc-1kR">
@@ -2448,7 +2427,7 @@
             </objects>
             <point key="canvasLocation" x="5353" y="4640"/>
         </scene>
-        <!--Breakfast Screen-->
+        <!--มื้อเช้า-->
         <scene sceneID="Yhd-4M-q3C">
             <objects>
                 <tableViewController id="7L2-U0-hGt" customClass="BreakfastScreen" customModule="Project" customModuleProvider="target" sceneMemberID="viewController">
@@ -2500,7 +2479,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="dhl-vR-xea">
+                    <navigationItem key="navigationItem" title="มื้อเช้า" id="dhl-vR-xea">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="icons25" id="IQk-NJ-tOM"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -2573,7 +2552,7 @@
             </objects>
             <point key="canvasLocation" x="6126" y="-612"/>
         </scene>
-        <!--Lunch Screen-->
+        <!--มื้อกลางวัน-->
         <scene sceneID="jlx-O0-hnu">
             <objects>
                 <tableViewController id="jgK-FR-EFL" customClass="LunchScreen" customModule="Project" customModuleProvider="target" sceneMemberID="viewController">
@@ -2625,7 +2604,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="u9A-hA-o6v">
+                    <navigationItem key="navigationItem" title="มื้อกลางวัน" id="u9A-hA-o6v">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="icons25" id="Nql-51-wmb"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -2698,7 +2677,7 @@
             </objects>
             <point key="canvasLocation" x="6126" y="175"/>
         </scene>
-        <!--Dinner Screen-->
+        <!--มื้อเย็น-->
         <scene sceneID="g4d-df-3sL">
             <objects>
                 <tableViewController id="QAe-Sv-IxV" customClass="DinnerScreen" customModule="Project" customModuleProvider="target" sceneMemberID="viewController">
@@ -2750,7 +2729,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="JaP-Ih-HLu">
+                    <navigationItem key="navigationItem" title="มื้อเย็น" id="JaP-Ih-HLu">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="icons25" id="qzy-Nf-jHX"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -2823,16 +2802,16 @@
             </objects>
             <point key="canvasLocation" x="6126" y="947"/>
         </scene>
-        <!--My Menu Scre-->
+        <!--My Menu Screen-->
         <scene sceneID="joJ-Th-yxe">
             <objects>
-                <tableViewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="gAF-jR-tpD" customClass="MyMenuScre" customModule="Project" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="gAF-jR-tpD" customClass="MyMenuScreen" customModule="Project" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="gQL-e4-MCN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="StoryMy Cell" rowHeight="107" id="zS7-NS-aAe" customClass="MyMenuScreCell" customModule="Project" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="StoryMy Cell" rowHeight="107" id="zS7-NS-aAe" customClass="MyMenuScreenCell" customModule="Project" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="107"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zS7-NS-aAe" id="yij-x4-BpO">
@@ -2887,7 +2866,7 @@
             </objects>
             <point key="canvasLocation" x="3670" y="-2284"/>
         </scene>
-        <!--Calender View Controller-->
+        <!--ปฏิทิน-->
         <scene sceneID="7e7-dY-5Iq">
             <objects>
                 <viewController id="GD2-DK-8m3" customClass="CalenderViewController" customModule="Project" customModuleProvider="target" sceneMemberID="viewController">
@@ -2898,14 +2877,17 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qu3-Cf-ou8">
                                 <rect key="frame" x="70" y="87" width="235" height="31"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zg3-lw-fTa">
                                 <rect key="frame" x="313" y="88" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                <state key="normal" title="Next"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="next:" destination="GD2-DK-8m3" eventType="touchUpInside" id="zSZ-MU-0s2"/>
                                 </connections>
@@ -2913,7 +2895,10 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NZO-bF-Skw">
                                 <rect key="frame" x="16" y="88" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                <state key="normal" title="Back"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="back:" destination="GD2-DK-8m3" eventType="touchUpInside" id="Ak7-mH-wp9"/>
                                 </connections>
@@ -2921,7 +2906,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZfS-60-vwz">
                                 <rect key="frame" x="31" y="192" width="318" height="228"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="0.80431873460000003" blue="0.73655298979999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rob-2V-Fk8">
                                     <size key="itemSize" width="40" height="40"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -2939,7 +2924,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ng-2o-Q7G">
                                                     <rect key="frame" x="2" y="12" width="46" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -2958,58 +2943,58 @@
                                 </connections>
                             </collectionView>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" alignment="top" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="FMp-zH-qTD">
-                                <rect key="frame" x="31" y="153" width="340" height="20.5"/>
+                                <rect key="frame" x="31" y="153" width="354" height="20.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Mon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4vd-MX-ytT">
-                                        <rect key="frame" x="0.0" y="0.0" width="34" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="36" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Tue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uf2-tS-Q9w">
-                                        <rect key="frame" x="57" y="0.0" width="28" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="59" y="0.0" width="30.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Wed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jBe-Th-wY9">
-                                        <rect key="frame" x="108" y="0.0" width="35" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="112.5" y="0.0" width="36.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Thu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lCy-eu-b5V">
-                                        <rect key="frame" x="166" y="0.0" width="30" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="172" y="0.0" width="32" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Fri" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="33e-Ti-2bV">
-                                        <rect key="frame" x="219" y="0.0" width="19.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="227" y="0.0" width="21.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Sat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SCR-dG-vzN">
-                                        <rect key="frame" x="261.5" y="0.0" width="25.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="271.5" y="0.0" width="27.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Sun" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5cV-2I-CA0">
-                                        <rect key="frame" x="310" y="0.0" width="30" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="322" y="0.0" width="32" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="1" green="0.80431873460000003" blue="0.73655298979999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="RJ5-nc-dkU"/>
                     </view>
-                    <navigationItem key="navigationItem" id="dzL-eJ-RHW"/>
+                    <navigationItem key="navigationItem" title="ปฏิทิน" id="dzL-eJ-RHW"/>
                     <connections>
                         <outlet property="calender" destination="ZfS-60-vwz" id="BYb-ed-sm4"/>
                         <outlet property="monthLabel" destination="qu3-Cf-ou8" id="bef-cv-UBi"/>
@@ -3029,6 +3014,7 @@
         <image name="userIcon" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Igf-6S-m2H"/>
         <segue reference="lj9-0s-aPt"/>
         <segue reference="8QL-6D-wer"/>
         <segue reference="dVD-hY-iCf"/>

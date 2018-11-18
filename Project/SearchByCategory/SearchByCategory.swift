@@ -19,8 +19,6 @@ class SearchByCategory: UITableViewController , UISearchBarDelegate, UITextViewD
     var postData = [Menu]()
     var currentPostData = [Menu]()
     var ref: DatabaseReference?
-    //var databaseHandle: DatabaseHandle?
-    // 1. create a reference to the db location you want to download
     let menuRef = Database.database().reference().child("menu")
     var menu = [Menu]()
     
@@ -50,22 +48,6 @@ class SearchByCategory: UITableViewController , UISearchBarDelegate, UITextViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //ref?.child("menu").queryOrdered(byChild: "text")
-        //
-        //        DataService.ds.MSGS_DB_REF.queryOrdered(byChild: "text").observe(.value) { (snapshot) in
-        //            self.menu = [Menu]()
-        //
-        //            if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
-        //                for snap in snapshot {
-        //                    if (snap.value as? [String: AnyObject]) != nil {
-        //                        let message = Menu(text: snap.key, ingredient: snap.key, method: snap.key)
-        //                        self.menu.append(message)
-        //
-        //                    }
-        //                }
-        //                self.tableView.reloadData()
-        //            }
-        //        }
         self.searchBarSetUp()
         
         self.navigationController?.navigationBar.isHidden = false
@@ -130,13 +112,11 @@ class SearchByCategory: UITableViewController , UISearchBarDelegate, UITextViewD
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currentPostData.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-    {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Story Category", for: indexPath) as! SearchByCategoryCell
         let menufood = currentPostData[indexPath.row]
         cell.menufood = menufood

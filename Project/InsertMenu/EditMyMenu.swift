@@ -67,8 +67,6 @@ class EditMyMenu: BaseMenuController, UIPickerViewDelegate, UIPickerViewDataSour
         imageView.addGestureRecognizer(imageTap)
         imageView.layer.cornerRadius = imageView.bounds.height / 2
         imageView.clipsToBounds = true
-        //tapToChangeProfileButton.addTarget(self, action: #selector(openImagePicker), for: .touchUpInside)
-        
         imagePicker = UIImagePickerController()
         imagePicker.allowsEditing = true
         imagePicker.sourceType = .photoLibrary
@@ -81,14 +79,7 @@ class EditMyMenu: BaseMenuController, UIPickerViewDelegate, UIPickerViewDataSour
     
     @IBAction func saveMymenu() {
         addMymenu()
-//        let vc = self.storyboard?.instantiateViewController(withIdentifier:"Detail") as! MyMenuDetail
-//        self.present(vc, animated: true, completion: nil)
-//        dismiss(animated: true, completion: nil)
     }
-    
-//    @IBAction func dismiss() {
-//        navigationController?.popViewController(animated: true)
-//    }
 
     func addMymenu() {
         guard let image = imageView.image else { return }

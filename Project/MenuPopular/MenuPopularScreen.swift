@@ -56,22 +56,6 @@ class MenuPopularScreen: UITableViewController, UISearchBarDelegate, UITextViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //ref?.child("menu").queryLimited(toLast: 10)//queryOrdered(byChild: "text")
-        //
-        //        DataService.ds.MSGS_DB_REF.queryOrdered(byChild: "text").observe(.value) { (snapshot) in
-        //            self.menu = [Menu]()
-        //
-        //            if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
-        //                for snap in snapshot {
-        //                    if (snap.value as? [String: AnyObject]) != nil {
-        //                        let message = Menu(text: snap.key, ingredient: snap.key, method: snap.key)
-        //                        self.menu.append(message)
-        //
-        //                    }
-        //                }
-        //                self.tableView.reloadData()
-        //            }
-        //        }
         self.searchBarSetUp()
         print(self.id)
         self.navigationController?.navigationBar.isHidden = false
@@ -89,16 +73,10 @@ class MenuPopularScreen: UITableViewController, UISearchBarDelegate, UITextViewD
     
     func searchBarSetUp() {
         let searchBar = UISearchBar(frame: CGRect(x: 0,y: 0, width:(UIScreen.main.bounds.width), height: 70))
-        //searchBar.placeholder = "ค้นหาโดยชื่อเมนูอาหาร"
         searchBar.showsScopeBar = true
         searchBar.scopeButtonTitles = ["ค้นหาโดยชื่อเมนูอาหาร", "ค้นหาโดยวัตถุดิบ"]
-        //searchBar.barTintColor = UIColor.blue
         searchBar.selectedScopeButtonIndex = 0
-        if searchBar.selectedScopeButtonIndex == 0 {
-            searchBar.placeholder = "ค้นหาโดยชื่อเมนูอาหาร"
-        } else {
-            searchBar.placeholder = "ค้นหาโดยวัตถุดิบ"
-        }
+        searchBar.placeholder = "ค้นหา"
         searchBar.delegate = self
         self.tableView.tableHeaderView = searchBar
     }
@@ -109,7 +87,6 @@ class MenuPopularScreen: UITableViewController, UISearchBarDelegate, UITextViewD
             self.tableView.reloadData()
         } else {
             filterTableView(ind: searchBar.selectedScopeButtonIndex,text: searchText)
-            //self.tableView.reloadData()
         }
         self.tableView.reloadData()
     }
@@ -146,8 +123,6 @@ class MenuPopularScreen: UITableViewController, UISearchBarDelegate, UITextViewD
         }
     }
     
-    
-    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -158,7 +133,6 @@ class MenuPopularScreen: UITableViewController, UISearchBarDelegate, UITextViewD
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        // TODO: return the stories count
         return currentPostData.count
     }
     
@@ -174,14 +148,11 @@ class MenuPopularScreen: UITableViewController, UISearchBarDelegate, UITextViewD
         let iden = "MenuPopular"
         if segue.identifier == iden {
             let searchMenu = segue.destination as! MenuPopularDetail
-            //let post = currentPostData[tableView.indexPathForSelectedRow!.row]
             let menu = currentPostData[tableView.indexPathForSelectedRow!.row].menu
             let ingredient = currentPostData[tableView.indexPathForSelectedRow!.row].ingredient
             let method = currentPostData[tableView.indexPathForSelectedRow!.row].method
             let category = currentPostData[tableView.indexPathForSelectedRow!.row].kindOFfood
             let photoURL = currentPostData[tableView.indexPathForSelectedRow!.row].photoURL
-            //let timestamp = currentPostData[tableView.indexPathForSelectedRow!.row].timestamp
-            //let numberOfLikes = currentPostData[tableView.indexPathForSelectedRow!.row].numberOfLikes
             searchMenu.menu = menu!
             searchMenu.ingredient = ingredient!
             searchMenu.method = method!
@@ -189,15 +160,6 @@ class MenuPopularScreen: UITableViewController, UISearchBarDelegate, UITextViewD
             searchMenu.photoURL = photoURL!
             print("Right Here")
             print(photoURL)
-            //searchMenu.timestamp = timestamp!
-            //searchMenu.numberOfLikes = numberOfLikes
-            //            var menu: String!
-            //            var ingredient: String!
-            //            var method: String!
-            //            var kindOFfood: String!
-            //            var photoURL: String!
-            //            var timestamp: Double!
-            //            var numberOfLikes = 0
         }
     }
 }

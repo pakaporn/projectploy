@@ -36,14 +36,6 @@ class SearchMenu: BaseMenuController {
     var photoURL = ""
     var timestamp: Double = 0
     var numberOfLikes = 0
-    //    var menufood: Menu! {
-    //        didSet {
-    //            menuLabel.text = menufood.text
-    //            ingredientTextView.text = menufood.ingredient
-    //            methodTextView.text = menufood.method
-    //
-    //        }
-    //    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,7 +81,6 @@ class SearchMenu: BaseMenuController {
                             "photoURL": photoURL as String,
                             "timestamp": timestamp as Double
             ] as [String : Any]
-        //,"category": categoryTextView.text! as String
         menuFav.child(key).setValue(menuFavorite)
     }
     
@@ -112,8 +103,6 @@ class SearchMenu: BaseMenuController {
         //        }
     }
 }
-
-
 
 extension SearchMenu: UIPickerViewDelegate, UIPickerViewDataSource {
     

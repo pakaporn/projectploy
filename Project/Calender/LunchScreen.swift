@@ -68,11 +68,7 @@ class LunchScreen: UITableViewController, UISearchBarDelegate, UITextViewDelegat
         searchBar.scopeButtonTitles = ["ค้นหาโดยชื่อเมนูอาหาร", "ค้นหาโดยวัตถุดิบ"]
         //searchBar.barTintColor = UIColor.blue
         searchBar.selectedScopeButtonIndex = 0
-        if searchBar.selectedScopeButtonIndex == 0 {
-            searchBar.placeholder = "ค้นหาโดยชื่อเมนูอาหาร"
-        } else {
-            searchBar.placeholder = "ค้นหาโดยวัตถุดิบ"
-        }
+        searchBar.placeholder = "ค้นหา"
         searchBar.delegate = self
         self.tableView.tableHeaderView = searchBar
     }

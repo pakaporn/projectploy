@@ -1,107 +1,195 @@
-////
-////  MyMenuScreen.swift
-////  Project
-////
-////  Created by Pakaporn on 9/25/2561 BE.
-////  Copyright © 2561 Pakaporn. All rights reserved.
-////
-////
-//import Foundation
-//import UIKit
-//import Firebase
 //
-//class MyMenuScreen: BaseMenuController, UITableViewDelegate, UITableViewDataSource {
-//    
-//    @IBOutlet weak var menuButton: UIBarButtonItem!
-//    var tableView:UITableView!
-//    var posts = [Post]()
-//    
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        self.navigationItem.hidesBackButton = true
-// 
-//        tableView = UITableView(frame: view.bounds, style: .plain)
-//        
-//        let cellNib = UINib(nibName: "MyMenuScreenCell", bundle: nil)
-//        tableView.register(cellNib, forCellReuseIdentifier: "Story MyMenu")
-//        tableView.backgroundColor = UIColor(white: 0.90,alpha:1.0)
-//        view.addSubview(tableView)
-//        var layoutGuide: UILayoutGuide!
-//    
-//        if #available(iOS 11.0, *) {
-//            layoutGuide = view.safeAreaLayoutGuide
-//        } else {
-//            // Fallback on earlier versions
-//            layoutGuide = view.layoutMarginsGuide
-//        }
-//        
-//        tableView.translatesAutoresizingMaskIntoConstraints = false
-//        tableView.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor).isActive = true
-//        tableView.topAnchor.constraint(equalTo: layoutGuide.topAnchor).isActive = true
-//        tableView.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor).isActive = true
-//        tableView.bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor).isActive = true
-//        tableView.delegate = self
-//        tableView.dataSource = self
-//        tableView.reloadData()
+//  MyMenuScre.swift
+//  Project
 //
-//        self.navigationController?.hidesBarsOnSwipe = true
-//        
-//        observePosts()
-//    }
-//    
-//    func observePosts() {
-//        let postsRef = Database.database().reference().child("posts")
-//        postsRef.observe(.value, with: { snapshot in
-//            var tempPosts = [Post]()
-//            
-////            for child in snapshot.children {
-////                if let childSnapshot = child as? DataSnapshot,
-////                    let dict = childSnapshot.value as? [String:Any],
-////                    let author = dict["author"] as? [String:Any],
-////                    let uid = author["uid"] as? String,
-////                    let username = author["username"] as? String,
-////                    let photoURL = author["photoURL"] as? String,
-////                    let url = URL(string:photoURL),
-////                    let text = dict["text"] as? String,
-////                    let timestamp = dict["timestamp"] as? Double {
-////
-////                    let userProfile = UserProfile(uid: uid, username: username, photoURL: url)
-////                    let post = Post(id: childSnapshot.key, author: userProfile, text: text, timestamp:timestamp)
-////                    tempPosts.append(post)
-////                }
-////            }
-//            self.posts = tempPosts
-//            self.tableView.reloadData()
-//            //self.performSegue(withIdentifier: "back", sender: nil)
-//        })
-//    }
-////    @IBAction func handleLogout(_ sender: Any) {
-////        try! Auth.auth().signOut()
-////
-////    }
-//    
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return 1
-//    }
-//    
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return posts.count
-//    }
-//    
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "Story MyMenu", for: indexPath) as! MyMenuScreenCell
-//        cell.set(post: posts[indexPath.row])
-//        return cell
-//    }
-//    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let iden = "InsertMymenu"
-//        if segue.identifier == iden {
-//            let insertMymenu = segue.destination as! InsertMyMenu
-//        }
-//    }
-//}
+//  Created by Pakaporn on 11/12/2561 BE.
+//  Copyright © 2561 Pakaporn. All rights reserved.
 //
-//
-//
-//
+
+import UIKit
+import Firebase
+
+class MyMenuScreen: UITableViewController , UISearchBarDelegate, UITextViewDelegate {
+    
+    @IBOutlet weak var menuButton: UIBarButtonItem!
+    var postData = [Post]()
+    var currentPostData = [Post]()
+    var ref: DatabaseReference?
+    var databaseHandle: DatabaseHandle?
+    // 1. create a reference ot the db location you want to download
+    let menuRef = Database.database().reference().child("posts")
+    var menu = [Post]()
+    var keepData = [Post]()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // download menu
+        Auth.auth().addStateDidChangeListener { (auth, user) in
+            if user != nil {
+                self.menuRef.observe(.value, with: { (snapshot) in
+                    self.menu.removeAll()
+                    if self.currentPostData.count == 0 { //เช็คว่าถ้าไม่มีค่าใน currentPostData  จะโหลดข้อมูลจาก firebase
+                        for child in snapshot.children {
+                            let childSnapshot = child as! DataSnapshot
+                            let menufood = Post(snapshot: childSnapshot)
+                            self.menu.insert(menufood, at: 0)
+                            if (user!.displayName == menufood.user.username) {
+                                self.postData.append(menufood)
+                                self.currentPostData = self.postData
+                            }
+                            self.tableView.reloadData()
+                        }
+                        //                    }
+                        //                }
+                    }
+                    self.tableView.reloadData()
+                })
+            }
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.searchBarSetUp()
+        self.navigationController?.navigationBar.isHidden = false
+        self.navigationItem.hidesBackButton = true
+        title = "เมนูอาหารของฉัน"
+        self.tableView.estimatedRowHeight = 92.0
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icons25"), style: UIBarButtonItemStyle.plain, target: self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)))
+        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        self.revealViewController().rearViewRevealWidth = 240
+        
+        self.navigationController?.hidesBarsOnSwipe = true
+    }
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return currentPostData.count
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "StoryMy Cell", for: indexPath) as! MyMenuScreenCell
+        let menufood = currentPostData[indexPath.row]
+        cell.usernameLabel.text = menufood.menu
+        return cell
+    }
+    
+    func searchBarSetUp() {
+        let searchBar = UISearchBar(frame: CGRect(x: 0,y: 0, width:(UIScreen.main.bounds.width), height: 70))
+        //searchBar.placeholder = "ค้นหาโดยชื่อเมนูอาหาร"
+        searchBar.showsScopeBar = true
+        searchBar.scopeButtonTitles = ["ค้นหาโดยชื่อเมนูอาหาร", "ค้นหาโดยวัตถุดิบ"]
+        //searchBar.barTintColor = UIColor.blue
+        searchBar.selectedScopeButtonIndex = 0
+        searchBar.placeholder = "ค้นหา"
+        searchBar.delegate = self
+        self.tableView.tableHeaderView = searchBar
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            currentPostData = postData
+            self.tableView.reloadData()
+        } else {
+            filterTableView(ind: searchBar.selectedScopeButtonIndex,text: searchText)
+            //self.tableView.reloadData()
+        }
+        self.tableView.reloadData()
+    }
+    
+    func filterTableView(ind: Int, text: String){
+        switch ind {
+        case selectedScope.name.rawValue:
+            currentPostData = postData.filter({ (mod) -> Bool in
+                return mod.menu.lowercased().contains(text.lowercased())
+            })
+            self.tableView.reloadData()
+        default:
+            print("No Data")
+        }
+        
+        switch ind {
+        case selectedScope.ingredients.rawValue:
+            currentPostData = postData.filter({ (mod) -> Bool in
+                return mod.ingredient.lowercased().contains(text.lowercased())
+            })
+            self.tableView.reloadData()
+        default:
+            print("No Data")
+        }
+        
+        switch ind {
+        case selectedScope.category.rawValue:
+            currentPostData = postData.filter({ (mod) -> Bool in
+                return mod.kindOFfood.lowercased().contains(text.lowercased())
+            })
+            self.tableView.reloadData()
+        default:
+            print("No Data")
+        }
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete){
+            let keepMenuTest = currentPostData[indexPath.row].menu
+            Database.database().reference().child("posts").observe(.value, with: { (snapshot) in
+                if let result = snapshot.children.allObjects as? [DataSnapshot] {
+                    for child in result {
+                        let userKey = child.key
+                        let menufood = Post(snapshot: child)
+                        self.keepData.insert(menufood, at: 0)
+                        //print(self.keepData[0].menu)
+                        if self.keepData[0].menu == keepMenuTest {
+                            // print(userKey)
+                            self.currentPostData.remove(at: indexPath.item)
+                            tableView.deleteRows(at: [indexPath], with: .automatic)
+                            self.menuRef.child(userKey).removeValue()
+                        }
+                    }
+                }
+            })
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let iden = "InsertMymenuDetail"
+        if segue.identifier == iden {
+            let insertMymenu = segue.destination as! MyMenuDetail
+            //let searchCategory = segue.destination as! SearchByCategoryDetail
+            let menu = currentPostData[tableView.indexPathForSelectedRow!.row].menu
+            let ingredient = currentPostData[tableView.indexPathForSelectedRow!.row].ingredient
+            let method = currentPostData[tableView.indexPathForSelectedRow!.row].method
+            let kindOFfood = currentPostData[tableView.indexPathForSelectedRow!.row].kindOFfood
+            let photoURL = currentPostData[tableView.indexPathForSelectedRow!.row].photoURL
+            let timestamp = currentPostData[tableView.indexPathForSelectedRow!.row].timestamp
+            let username = currentPostData[tableView.indexPathForSelectedRow!.row].user.username
+            let uid = currentPostData[tableView.indexPathForSelectedRow!.row].user.uid
+            let uphotoURL = currentPostData[tableView.indexPathForSelectedRow!.row].user.photoURL
+            let numberOfLikes = currentPostData[tableView.indexPathForSelectedRow!.row].numberOfLikes
+            insertMymenu.menu = menu!
+            insertMymenu.ingredient = ingredient!
+            insertMymenu.photoURL = photoURL!
+            insertMymenu.getCategory = kindOFfood!
+            insertMymenu.method = method!
+            insertMymenu.timestamp = timestamp!
+            insertMymenu.uid = uid!
+            insertMymenu.username = username!
+            insertMymenu.uphotoURL = uphotoURL!
+            insertMymenu.numberOfLikes = numberOfLikes
+        }
+    }
+}

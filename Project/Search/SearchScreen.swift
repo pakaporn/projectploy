@@ -52,22 +52,6 @@ class SearchScreen: UITableViewController, UISearchBarDelegate, UITextViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //ref?.child("menu").queryLimited(toLast: 10)//queryOrdered(byChild: "text")
-        //
-        //        DataService.ds.MSGS_DB_REF.queryOrdered(byChild: "text").observe(.value) { (snapshot) in
-        //            self.menu = [Menu]()
-        //
-        //            if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
-        //                for snap in snapshot {
-        //                    if (snap.value as? [String: AnyObject]) != nil {
-        //                        let message = Menu(text: snap.key, ingredient: snap.key, method: snap.key)
-        //                        self.menu.append(message)
-        //
-        //                    }
-        //                }
-        //                self.tableView.reloadData()
-        //            }
-        //        }
         self.searchBarSetUp()
         print(self.id)
         self.navigationController?.navigationBar.isHidden = false
@@ -90,11 +74,7 @@ class SearchScreen: UITableViewController, UISearchBarDelegate, UITextViewDelega
         searchBar.scopeButtonTitles = ["ค้นหาโดยชื่อเมนูอาหาร", "ค้นหาโดยวัตถุดิบ"]
         //searchBar.barTintColor = UIColor.blue
         searchBar.selectedScopeButtonIndex = 0
-        if searchBar.selectedScopeButtonIndex == 0 {
-            searchBar.placeholder = "ค้นหาโดยชื่อเมนูอาหาร"
-        } else {
-            searchBar.placeholder = "ค้นหาโดยวัตถุดิบ"
-        }
+        searchBar.placeholder = "ค้นหา"
         searchBar.delegate = self
         self.tableView.tableHeaderView = searchBar
     }
@@ -105,7 +85,6 @@ class SearchScreen: UITableViewController, UISearchBarDelegate, UITextViewDelega
             self.tableView.reloadData()
         } else {
             filterTableView(ind: searchBar.selectedScopeButtonIndex,text: searchText)
-            //self.tableView.reloadData()
         }
         self.tableView.reloadData()
     }
@@ -141,9 +120,7 @@ class SearchScreen: UITableViewController, UISearchBarDelegate, UITextViewDelega
             print("No Data")
         }
     }
-    
-    
-    
+
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -154,7 +131,6 @@ class SearchScreen: UITableViewController, UISearchBarDelegate, UITextViewDelega
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        // TODO: return the stories count
         return currentPostData.count
     }
     
@@ -185,13 +161,6 @@ class SearchScreen: UITableViewController, UISearchBarDelegate, UITextViewDelega
             searchMenu.photoURL = photoURL!
             searchMenu.timestamp = timestamp!
             searchMenu.numberOfLikes = numberOfLikes
-//            var menu: String!
-//            var ingredient: String!
-//            var method: String!
-//            var kindOFfood: String!
-//            var photoURL: String!
-//            var timestamp: Double!
-//            var numberOfLikes = 0
         }
     }
 }

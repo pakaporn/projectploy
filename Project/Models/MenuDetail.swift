@@ -82,10 +82,6 @@ class MenuDetail {
             "numberOfLikes": numberOfLikes
         ]
     }
-    
-//    func chatPartnerId() -> String? {
-//        return fromId == Auth.auth().currentUser?.uid ? toId : fromId
-//    }
 }
 
 extension MenuDetail {

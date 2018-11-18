@@ -12,9 +12,18 @@ class MealScreen: BaseMenuController {
 
     var date = ""
     var meals = ""
-    
+    @IBOutlet var BreakfastButton: UIButton!
+    @IBOutlet var LunchButton: UIButton!
+    @IBOutlet var DinnerButton: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        BreakfastButton.layer.borderWidth = 2
+        LunchButton.layer.borderWidth = 2
+        DinnerButton.layer.borderWidth = 2
+        BreakfastButton.layer.cornerRadius = BreakfastButton.bounds.height/2
+        LunchButton.layer.cornerRadius = LunchButton.bounds.height/2
+        DinnerButton.layer.cornerRadius = DinnerButton.bounds.height/2
         self.navigationController?.hidesBarsOnSwipe = true 
     }
 

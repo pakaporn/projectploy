@@ -25,8 +25,6 @@ class SearchByCheckList: UITableViewController, UISearchBarDelegate, UITextViewD
     var postData = [Menu]()
     var currentPostData = [Menu]()
     var ref: DatabaseReference?
-    //var databaseHandle: DatabaseHandle?
-    // 1. create a reference to the db location you want to download
     let menuRef = Database.database().reference().child("menu")
     var menu = [Menu]()
     
@@ -79,22 +77,6 @@ class SearchByCheckList: UITableViewController, UISearchBarDelegate, UITextViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //ref?.child("menu").queryOrdered(byChild: "text")
-        //
-        //        DataService.ds.MSGS_DB_REF.queryOrdered(byChild: "text").observe(.value) { (snapshot) in
-        //            self.menu = [Menu]()
-        //
-        //            if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
-        //                for snap in snapshot {
-        //                    if (snap.value as? [String: AnyObject]) != nil {
-        //                        let message = Menu(text: snap.key, ingredient: snap.key, method: snap.key)
-        //                        self.menu.append(message)
-        //
-        //                    }
-        //                }
-        //                self.tableView.reloadData()
-        //            }
-        //        }
         self.searchBarSetUp()
         
         self.navigationController?.navigationBar.isHidden = false
@@ -115,6 +97,7 @@ class SearchByCheckList: UITableViewController, UISearchBarDelegate, UITextViewD
         searchBar.showsScopeBar = true
         searchBar.scopeButtonTitles = ["ค้นหาโดยชื่อเมนูอาหาร", "ค้นหาโดยวัตถุดิบ"]
         searchBar.selectedScopeButtonIndex = 0
+        searchBar.placeholder = "ค้นหา"
         searchBar.delegate = self
         self.tableView.tableHeaderView = searchBar
     }

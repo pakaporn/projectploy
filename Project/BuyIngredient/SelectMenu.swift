@@ -54,22 +54,6 @@ class SelectMenu: UITableViewController, UISearchBarDelegate, UITextViewDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //ref?.child("menu").queryLimited(toLast: 10)//queryOrdered(byChild: "text")
-        //
-        //        DataService.ds.MSGS_DB_REF.queryOrdered(byChild: "text").observe(.value) { (snapshot) in
-        //            self.menu = [Menu]()
-        //
-        //            if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
-        //                for snap in snapshot {
-        //                    if (snap.value as? [String: AnyObject]) != nil {
-        //                        let message = Menu(text: snap.key, ingredient: snap.key, method: snap.key)
-        //                        self.menu.append(message)
-        //
-        //                    }
-        //                }
-        //                self.tableView.reloadData()
-        //            }
-        //        }
         self.searchBarSetUp()
         print(keepIngredient)
         print(keepNoIngredient)
@@ -92,6 +76,7 @@ class SelectMenu: UITableViewController, UISearchBarDelegate, UITextViewDelegate
         searchBar.scopeButtonTitles = ["ค้นหาโดยชื่อเมนูอาหาร", "ค้นหาโดยวัตถุดิบ"]
         //searchBar.barTintColor = UIColor.blue
         searchBar.selectedScopeButtonIndex = 0
+        searchBar.placeholder = "ค้นหา"
         searchBar.delegate = self
         self.tableView.tableHeaderView = searchBar
     }
@@ -187,8 +172,6 @@ class SelectMenu: UITableViewController, UISearchBarDelegate, UITextViewDelegate
                     }
                 }
             }
-            //ingredient.keepIngredient = keepTaskName
-
         }
     }
 }
