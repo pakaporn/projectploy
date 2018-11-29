@@ -16,16 +16,21 @@ class SearchByCheckListScreen: BaseMenuController, UITableViewDelegate, UITableV
         UIImage(named: "chicken")!,
         UIImage(named: "chop")!,
         UIImage(named: "fish")!,
+        UIImage(named: "beef")!,
         UIImage(named: "egg")!,
         UIImage(named: "egg")!,
         UIImage(named: "chili")!,
         UIImage(named: "lemon")!,
-        UIImage(named: "lemon")!,
-        UIImage(named: "lemon")!,
-        UIImage(named: "cabbage")!
+        UIImage(named: "spinach")!,
+        UIImage(named: "carrot")!,
+        UIImage(named: "cabbage")!,
+        UIImage(named: "mushroom")!,
+        UIImage(named: "courgette")!,
+        UIImage(named: "yogurt")!,
+        UIImage(named: "milk")!
     ]
     
-    var tasks: [Tasks] = [Tasks(name: "ไก่"), Tasks(name: "หมู"), Tasks(name: "ปลา"), Tasks(name: "ไข่ไก่"), Tasks(name: "ไข่เป็ด"), Tasks(name: "พริก"), Tasks(name: "มะนาว"), Tasks(name: "ใบกระเพรา"), Tasks(name: "ผักชี"), Tasks(name: "กะหล่ำปลี")]
+    var tasks: [Tasks] = [Tasks(name: "ไก่"), Tasks(name: "หมู"), Tasks(name: "ปลา"), Tasks(name: "เนื้อวัว"), Tasks(name: "ไข่ไก่"), Tasks(name: "ไข่เป็ด"), Tasks(name: "พริก"), Tasks(name: "มะนาว"), Tasks(name: "ใบกระเพรา"), Tasks(name: "แครอท"), Tasks(name: "กะหล่ำปลี"), Tasks(name: "เห็ด"), Tasks(name: "แตงกวา"), Tasks(name: "โยเกิร์ต"), Tasks(name: "นม")]
     var keepTaskName: [String] = []
     
     override func viewDidLoad() {

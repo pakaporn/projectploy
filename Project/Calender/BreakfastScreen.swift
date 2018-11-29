@@ -50,7 +50,6 @@ class BreakfastScreen: UITableViewController, UISearchBarDelegate, UITextViewDel
         //print(self.id)
         self.navigationController?.navigationBar.isHidden = false
         self.navigationItem.hidesBackButton = true
-        title = "เมนูอาหาร"
         self.tableView.estimatedRowHeight = 92.0
         self.tableView.rowHeight = UITableViewAutomaticDimension
         

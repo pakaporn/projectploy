@@ -12,6 +12,7 @@ class MealScreen: BaseMenuController {
 
     var date = ""
     var meals = ""
+    @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet var BreakfastButton: UIButton!
     @IBOutlet var LunchButton: UIButton!
     @IBOutlet var DinnerButton: UIButton!

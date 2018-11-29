@@ -14,6 +14,7 @@ protocol CheckBoxBuyIngredient {
 
 class BuyIngredientCell: UITableViewCell {
     
+    
     @IBAction func checkBoxAction(_ sender: Any) {
         if ingredients![indexP!].checkedIngredient {
             delegate?.checkBox(state: false, index: indexP)
@@ -29,5 +30,13 @@ class BuyIngredientCell: UITableViewCell {
     var indexP: Int?
     var delegate: CheckBox?
     var ingredients: [Ingredient]?
+//    var ingredientState: Bool! {
+//        didSet {
+//            delegate?.checkBox(state: true, index: indexP)
+//            if ingredientState {
+//                ingredientState = false
+//            }
+//        }
+//    }
 }
 

@@ -12,22 +12,22 @@ import Firebase
 class SearchByCategory: UITableViewController , UISearchBarDelegate, UITextViewDelegate {
 
     var keepTaskNamee : String = ""
-    var realCurrentData : [Menu] = []
+    var realCurrentData : [Post] = []
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
-    var postData = [Menu]()
-    var currentPostData = [Menu]()
+    var postData = [Post]()
+    var currentPostData = [Post]()
     var ref: DatabaseReference?
-    let menuRef = Database.database().reference().child("menu")
-    var menu = [Menu]()
+    let menuRef = Database.database().reference().child("posts")
+    var menu = [Post]()
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("this is keepTaskNamee ")
         print(keepTaskNamee)
         // download menu
-        let queryRef = menuRef.queryOrdered(byChild: "category").queryEqual(toValue: keepTaskNamee)
+        let queryRef = menuRef.queryOrdered(byChild: "kindOFfood").queryEqual(toValue: keepTaskNamee)
         
         queryRef.observe(.value, with: { (snapshot) in
             self.menu.removeAll()
@@ -35,7 +35,7 @@ class SearchByCategory: UITableViewController , UISearchBarDelegate, UITextViewD
             if self.currentPostData.count == 0 { //เช็คว่าถ้าไม่มีค่าใน currentPostData  จะโหลดข้อมูลจาก firebase
                 for child in snapshot.children {
                     let childSnapshot = child as! DataSnapshot
-                    let menufood = Menu(snapshot: childSnapshot)
+                    let menufood = Post(snapshot: childSnapshot)
                     self.menu.insert(menufood, at: 0)
                     self.postData.append(menufood)
                     self.currentPostData = self.postData
@@ -86,7 +86,7 @@ class SearchByCategory: UITableViewController , UISearchBarDelegate, UITextViewD
         switch ind  {
         case selectedScope.name.rawValue:
             currentPostData = postData.filter({ (mod) -> Bool in
-                return mod.getName().lowercased().contains(text.lowercased())
+                return mod.getMenuName().lowercased().contains(text.lowercased())
             })
             self.tableView.reloadData()
         default:
@@ -127,14 +127,16 @@ class SearchByCategory: UITableViewController , UISearchBarDelegate, UITextViewD
         let iden = "SearchCategory"
         if segue.identifier == iden {
             let searchCategory = segue.destination as! SearchByCategoryDetail
-            let name = currentPostData[tableView.indexPathForSelectedRow!.row].getName()
+            let name = currentPostData[tableView.indexPathForSelectedRow!.row].getMenuName()
             let ingredient = currentPostData[tableView.indexPathForSelectedRow!.row].getIngredient()
             let method = currentPostData[tableView.indexPathForSelectedRow!.row].getMethod()
-            let category = currentPostData[tableView.indexPathForSelectedRow!.row].getCategory()
+            let category = currentPostData[tableView.indexPathForSelectedRow!.row].kindOFfood
+            let photoURL = currentPostData[tableView.indexPathForSelectedRow!.row].photoURL
             searchCategory.menu = name
             searchCategory.ingredient = ingredient
             searchCategory.method = method
-            searchCategory.keepCategory = category
+            searchCategory.keepCategory = category!
+            searchCategory.photoURL = photoURL!
         }
     }
 }

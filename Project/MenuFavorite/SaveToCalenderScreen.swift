@@ -13,6 +13,8 @@ class SaveToCalenderScreen: UIViewController {
     
     @IBOutlet weak var inputTextField: UITextField!
     @IBOutlet weak var mealTextField: UITextField!
+    @IBOutlet var saveButton: UIButton!
+    
     private var datePicker: UIDatePicker!
     
     var menu = ""
@@ -25,6 +27,7 @@ class SaveToCalenderScreen: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        saveButton.layer.cornerRadius = saveButton.bounds.height/6
         datePicker = UIDatePicker()
         datePicker?.datePickerMode = .date
         datePicker?.addTarget(self, action: #selector(SaveToCalenderScreen.dateChanged(datePicker:)), for: .valueChanged)

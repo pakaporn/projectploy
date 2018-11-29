@@ -77,6 +77,7 @@ class InsertMyMenu: BaseMenuController, UIPickerViewDelegate, UIPickerViewDataSo
         let imageTap = UITapGestureRecognizer(target: self, action: #selector(openImagePicker))
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(imageTap)
+        saveMenu.layer.cornerRadius = saveMenu.bounds.height/6
         imageView.layer.cornerRadius = imageView.bounds.height / 8
         imageView.clipsToBounds = true
         imagePicker = UIImagePickerController()
@@ -87,8 +88,7 @@ class InsertMyMenu: BaseMenuController, UIPickerViewDelegate, UIPickerViewDataSo
     
     func uploadProfileImage(_ image: UIImage, completion: @escaping ((_ url: URL?)->())) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
-        let storageRef = Storage.storage().reference().child("photoURL")
-        
+        let storageRef = Storage.storage().reference().child("\(menuTextField.text!)")
         guard let imageData = UIImageJPEGRepresentation(image, 0.75) else { return }
         let metaData = StorageMetadata()
         metaData.contentType = "image/jpg"

@@ -35,6 +35,7 @@ class MenuController: UIViewController, UITableViewDataSource, UITableViewDelega
         UIImage(named: "searchchecklist")!,
         UIImage(named: "logout")!
     ]
+    
     var optionsImageView: [UIImage] = []
     var menuOptions: [String] = []
     //var profileImageView: UIImageView!
@@ -88,8 +89,9 @@ class MenuController: UIViewController, UITableViewDataSource, UITableViewDelega
         Auth.auth().addStateDidChangeListener { (auth, user) in
             if user != nil {
                 if user?.photoURL != nil {
-                    ImageService.getImage(withURL: (user?.photoURL)!  ) { image, url in
+                    ImageService.getImage(withURL: (user!.photoURL)!  ) { image, url in
                         self.profileImage.image = image
+                        //print(user?.photoURL)
                     }
                 }
                 self.userName.text = user?.displayName

@@ -9,9 +9,18 @@
 import UIKit
 
 class IngredientScreen: UITableViewController {
-
+    
+    var getIngredient = [String]()
+    @IBOutlet weak var menuButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(getIngredient)
+        print("On your way dude")
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icons25"), style: UIBarButtonItemStyle.plain, target: self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)))
+        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        self.revealViewController().rearViewRevealWidth = 240
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,19 +30,19 @@ class IngredientScreen: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return getIngredient.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "StoryIngredirnt Cell", for: indexPath) as! IngredientCell
-        //let menufood = currentPostData[indexPath.row]
-        // cell.menufood = menufood
+        let menufood = getIngredient[indexPath.row]
+        cell.storyLabel.text = menufood
         return cell
     }
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

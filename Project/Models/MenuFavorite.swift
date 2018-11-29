@@ -10,7 +10,7 @@ import Foundation
 import Firebase
 
 class MenuFavorite {
-    
+    var uid: String = ""
     var menu: String = ""
     var ingredient: String = ""
     var method: String = ""
@@ -19,7 +19,8 @@ class MenuFavorite {
     var numberOfLikes = 0
     let ref: DatabaseReference!
     
-    init(menu: String, ingredient: String, method: String, category: String) {
+    init(uid: String,menu: String, ingredient: String, method: String, category: String) {
+        self.uid = uid
         self.menu = menu
         self.ingredient = ingredient
         self.method = method
@@ -30,6 +31,7 @@ class MenuFavorite {
     init(snapshot: DataSnapshot) {
         ref = snapshot.ref
         if let value = snapshot.value as?  [String: Any] {
+            uid = value["uid"] as! String
             menu =  value["menu"] as! String
             ingredient =  value["ingredient"] as! String
             method =  value["method"] as! String

@@ -36,9 +36,24 @@ class SearchMenu: BaseMenuController {
     var photoURL = ""
     var timestamp: Double = 0
     var numberOfLikes = 0
+    var checkFamilar = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Auth.auth().addStateDidChangeListener { (auth, user) in
+            if user != nil {
+                Database.database().reference().child("menuFavorite").observe(.value, with: { (snapshot) in
+                    if let result = snapshot.children.allObjects as? [DataSnapshot] {
+                        for child in result {
+                            let menufood = MenuFavorite(snapshot: child)
+                            if menufood.getName() == self.text && menufood.uid == user!.uid{
+                                self.checkFamilar = true
+                            }
+                        }
+                    }
+                })
+            }
+        }
         setImage()
         menuLabel.text = text
         ingredientTextView.text = ingredient
@@ -69,19 +84,65 @@ class SearchMenu: BaseMenuController {
         view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
     }
     
+//    func set() {
+//        Auth.auth().addStateDidChangeListener { (auth, user) in
+//            if user != nil {
+//                //if user?.photoURL != nil {
+//                ImageService.getImage(withURL: (user?.photoURL)!  ) { image, url in
+//                    self.profileImage.image = image
+//                }
+//                //}
+//                self.userName.text = user?.displayName
+//            }
+//        }
+//    }
+
+    
     @IBAction func saveFavorite(_ sender: UIButton){
         let menuFav = Database.database().reference().child("menuFavorite")
         let key = menuFav.childByAutoId().key
-        let menuFavorite = ["id": key,
-                            "menu": menuLabel.text! as String,
-                            "ingredient": ingredientTextView.text! as String,
-                            "method": methodTextView.text! as String,
-                            "category": keepCategory as! String,
-                            "numberOfLikes": numberOfLikes as Int,
-                            "photoURL": photoURL as String,
-                            "timestamp": timestamp as Double
-            ] as [String : Any]
-        menuFav.child(key).setValue(menuFavorite)
+        Auth.auth().addStateDidChangeListener { (auth, user) in
+            if user != nil {
+                
+                if self.checkFamilar == false{
+                    let menuFavorite = ["id": key,
+                                        "uid": user!.uid,
+                                        "menu": self.menuLabel.text! as String,
+                                        "ingredient": self.ingredientTextView.text! as String,
+                                        "method": self.methodTextView.text! as String,
+                                        "category": self.keepCategory as! String,
+                                        "numberOfLikes": self.numberOfLikes as Int,
+                                        "photoURL": self.photoURL as String,
+                                        "timestamp": self.timestamp as Double
+                        ] as [String : Any]
+                    menuFav.child(key).setValue(menuFavorite)
+                    
+                    let alert = UIAlertController(title: "Success!", message: "This menu has added to your favorite menu.", preferredStyle: UIAlertControllerStyle.alert)
+                    
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
+                        alert.dismiss(animated: true, completion: nil)
+                    }))
+                    
+                    self.present(alert, animated: true, completion: nil)
+                }else {
+                    let alert = UIAlertController(title: "Fail!", message: "This menu has added in your favorite menu.", preferredStyle: UIAlertControllerStyle.alert)
+                    
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
+                        alert.dismiss(animated: true, completion: nil)
+                    }))
+                    
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }else{
+                let alert = UIAlertController(title: "Attention !", message: "You need to login first.", preferredStyle: UIAlertControllerStyle.alert)
+                
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
+                    alert.dismiss(animated: true, completion: nil)
+                }))
+                
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
     }
     
     func setImage() {

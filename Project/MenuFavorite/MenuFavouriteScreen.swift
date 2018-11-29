@@ -20,6 +20,7 @@ class MenuFavoriteScreen: UITableViewController , UISearchBarDelegate, UITextVie
     
     var postData = [MenuFavorite]()
     var currentPostData = [MenuFavorite]()
+    var keepCurrentPostData = [MenuFavorite]()
     var ref: DatabaseReference?
     var databaseHandle: DatabaseHandle?
     // 1. create a reference ot the db location you want to download
@@ -29,22 +30,29 @@ class MenuFavoriteScreen: UITableViewController , UISearchBarDelegate, UITextVie
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // download menu
-        menuRef.observe(.value, with: { (snapshot) in
-            self.mymenu.removeAll()
-            
-            if self.currentPostData.count == 0 { //เช็คว่าถ้าไม่มีค่าใน currentPostData  จะโหลดข้อมูลจาก firebase
-                for child in snapshot.children {
-                    let childSnapshot = child as! DataSnapshot
-                    let menufood = MenuFavorite(snapshot: childSnapshot)
-                    self.mymenu.insert(menufood, at: 0)
-                    self.postData.append(menufood)
-                    self.currentPostData = self.postData
+        Auth.auth().addStateDidChangeListener { (auth, user) in
+            if user != nil {
+                self.menuRef.observe(.value, with: { (snapshot) in
+                    self.mymenu.removeAll()
+                    if self.currentPostData.count == 0 { //เช็คว่าถ้าไม่มีค่าใน currentPostData  จะโหลดข้อมูลจาก firebase
+                        for child in snapshot.children {
+                            let childSnapshot = child as! DataSnapshot
+                            let menufood = MenuFavorite(snapshot: childSnapshot)
+                            self.mymenu.insert(menufood, at: 0)
+                            if user!.uid == menufood.uid {
+                                self.postData.append(menufood)
+                                self.currentPostData = self.postData
+                            }
+                            self.tableView.reloadData()
+                        }
+                    }
                     self.tableView.reloadData()
-                }
+                })
             }
-            self.tableView.reloadData()
-        })
+        }
     }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -127,17 +135,17 @@ class MenuFavoriteScreen: UITableViewController , UISearchBarDelegate, UITextVie
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let iden = "MenuFavorite"
         if segue.identifier == iden {
-            let myMenuDetail = segue.destination as! MenuFavoriteDetail
-            let name = currentPostData[tableView.indexPathForSelectedRow!.row].menu
+            let searchMenu = segue.destination as! MenuFavoriteDetail
+            let menu = currentPostData[tableView.indexPathForSelectedRow!.row].menu
             let ingredient = currentPostData[tableView.indexPathForSelectedRow!.row].ingredient
             let method = currentPostData[tableView.indexPathForSelectedRow!.row].method
-            let photoURL = currentPostData[tableView.indexPathForSelectedRow!.row].photoURL
             let category = currentPostData[tableView.indexPathForSelectedRow!.row].category
-            myMenuDetail.menu = name
-            myMenuDetail.ingredient = ingredient
-            myMenuDetail.method = method
-            myMenuDetail.photoURL = photoURL
-            myMenuDetail.keepCategory = category
+            let photoURL = currentPostData[tableView.indexPathForSelectedRow!.row].photoURL
+            searchMenu.menu = menu
+            searchMenu.ingredient = ingredient
+            searchMenu.method = method
+            searchMenu.keepCategory = category
+            searchMenu.photoURL = photoURL
         }
     }
 }

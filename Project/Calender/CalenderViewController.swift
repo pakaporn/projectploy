@@ -10,8 +10,9 @@ import UIKit
 
 var dataString = ""
 
-class CalenderViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class CalenderViewController: BaseMenuController, UICollectionViewDataSource, UICollectionViewDelegate {
     
+    @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var calender: UICollectionView!
     @IBOutlet weak var monthLabel: UILabel!
     

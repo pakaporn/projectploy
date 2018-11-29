@@ -50,7 +50,6 @@ class LunchScreen: UITableViewController, UISearchBarDelegate, UITextViewDelegat
         //print(self.id)
         self.navigationController?.navigationBar.isHidden = false
         self.navigationItem.hidesBackButton = true
-        title = "Lunch of this day"
         self.tableView.estimatedRowHeight = 92.0
         self.tableView.rowHeight = UITableViewAutomaticDimension
         

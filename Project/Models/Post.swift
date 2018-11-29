@@ -15,19 +15,7 @@ class Post {
     var numberOfLikes = 0
     var likeState = 0
     let ref: DatabaseReference!
-    
-//    init(user: UserProfile, menu: String, ingredient: String, method: String, kindOFfood: String, photoURL: String, timestamp: Double) {
-//        self.user = user
-//        self.menu = menu
-//        self.ingredient = ingredient
-//        self.method = method
-//        self.kindOFfood = kindOFfood
-//        self.photoURL = photoURL
-//        self.createdAt = Date(timeIntervalSince1970: timestamp / 1000)
-//        self.timestamp = timestamp
-//        ref = Database.database().reference().child("posts").childByAutoId()
-//    }
-    
+
     init(snapshot: DataSnapshot) {
         ref = snapshot.ref
         let value = snapshot.value as!  [String: Any]
@@ -44,18 +32,25 @@ class Post {
         self.photoURL = json["photoURL"].stringValue
         self.timestamp = value["timestamp"] as! Double
         self.numberOfLikes = value["numberOfLikes"] as! Int
-        
-//        let locationDict = userDict["location"] as! [String: Any]
-//        self.loc.coords = locationDict["coords"] as? String
-//        self.loc.name = locationDict["name"] as? String
-//        self.loc.visibility = locationDict["visibility"] as? Bool
     }
     
     func getMenuName() -> String {
         return menu
     }
-
+    
+    func getIngredient() -> String {
+        return ingredient
+    }
+    
+    func getMethod() -> String {
+        return method
+    }
+    
+//    func getCategory() -> String {
+//        return category
+//    }
 }
+
 extension Post {
     func like() {
         numberOfLikes += 1

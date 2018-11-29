@@ -17,9 +17,9 @@ class SearchByCheckListCell: UITableViewCell {
     @IBOutlet weak var storyLabel: UILabel!
     var ref: DatabaseReference?
     
-    var menufood: Menu! {
+    var menufood: Post! {
         didSet {
-            storyLabel.text = menufood.text
+            storyLabel.text = menufood.menu
             likeButton.setTitle("😍 \(menufood.numberOfLikes)", for: [])
             likeButton.layer.cornerRadius = likeButton.bounds.height/2
         }

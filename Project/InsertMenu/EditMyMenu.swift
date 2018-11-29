@@ -62,6 +62,8 @@ class EditMyMenu: BaseMenuController, UIPickerViewDelegate, UIPickerViewDataSour
         methodTextView.text = method
         category.dataSource = self
         category.delegate = self
+        camera.layer.cornerRadius = camera.bounds.height/6
+        updateMenu.layer.cornerRadius = updateMenu.bounds.height/6
         let imageTap = UITapGestureRecognizer(target: self, action: #selector(openImagePicker))
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(imageTap)
@@ -108,7 +110,8 @@ class EditMyMenu: BaseMenuController, UIPickerViewDelegate, UIPickerViewDataSour
     }
     
     func uploadImage(_ image: UIImage, completion: @escaping ((_ url: URL?)->())) {
-        let storageRef = Storage.storage().reference().child("photoURL")
+        let storageRef = Storage.storage().reference().child("\(menuTextField.text!)")
+
         
         guard let imageData = UIImageJPEGRepresentation(image, 0.75) else { return }
         let metaData = StorageMetadata()

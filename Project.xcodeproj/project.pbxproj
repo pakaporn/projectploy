@@ -51,6 +51,7 @@
 		820F3C412166CD87005F63A1 /* MenuPopular.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820F3C402166CD87005F63A1 /* MenuPopular.swift */; };
 		82133E612159FE8100CB7AA2 /* MyMenuDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82133E602159FE8100CB7AA2 /* MyMenuDetail.swift */; };
 		82133E63215A1CA100CB7AA2 /* MyMenuScreenCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82133E62215A1CA100CB7AA2 /* MyMenuScreenCell.xib */; };
+		8213CA7821A49EF20036FB02 /* KeepIngredientForBuy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8213CA7721A49EF20036FB02 /* KeepIngredientForBuy.swift */; };
 		8228840F2147640B00D293D6 /* MenuFavorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8228840E2147640B00D293D6 /* MenuFavorite.swift */; };
 		822884112147673D00D293D6 /* MenuFavouriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822884102147673D00D293D6 /* MenuFavouriteCell.swift */; };
 		823C2A4421255C5900EAB5FD /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823C2A4321255C5900EAB5FD /* UserService.swift */; };
@@ -153,6 +154,7 @@
 		820F3C402166CD87005F63A1 /* MenuPopular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPopular.swift; sourceTree = "<group>"; };
 		82133E602159FE8100CB7AA2 /* MyMenuDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMenuDetail.swift; sourceTree = "<group>"; };
 		82133E62215A1CA100CB7AA2 /* MyMenuScreenCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyMenuScreenCell.xib; sourceTree = "<group>"; };
+		8213CA7721A49EF20036FB02 /* KeepIngredientForBuy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepIngredientForBuy.swift; sourceTree = "<group>"; };
 		8228840E2147640B00D293D6 /* MenuFavorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFavorite.swift; sourceTree = "<group>"; };
 		822884102147673D00D293D6 /* MenuFavouriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFavouriteCell.swift; sourceTree = "<group>"; };
 		823C2A4321255C5900EAB5FD /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
@@ -235,11 +237,11 @@
 		8205B50121877A2200C54FF6 /* BuyIngredient */ = {
 			isa = PBXGroup;
 			children = (
-				8205B50221877BBE00C54FF6 /* BuyIngredientScreen.swift */,
-				8205B50421877BE000C54FF6 /* BuyIngredientCell.swift */,
 				8205B508218781C900C54FF6 /* SelectMenu.swift */,
 				8205B506218781B200C54FF6 /* SelectMenuCell.swift */,
 				8205B50A218782CB00C54FF6 /* SelectMenuDetail.swift */,
+				8205B50221877BBE00C54FF6 /* BuyIngredientScreen.swift */,
+				8205B50421877BE000C54FF6 /* BuyIngredientCell.swift */,
 				82F94D6D21921DBE0063CB78 /* IngredientScreen.swift */,
 				82F94D6B21921DA40063CB78 /* IngredientCell.swift */,
 			);
@@ -308,6 +310,7 @@
 				82ECB04420EBCC7E007EDBF3 /* Menu.swift */,
 				82FF732720F1316C00A253AA /* MenuDetail.swift */,
 				8228840E2147640B00D293D6 /* MenuFavorite.swift */,
+				8213CA7721A49EF20036FB02 /* KeepIngredientForBuy.swift */,
 				820F3C402166CD87005F63A1 /* MenuPopular.swift */,
 				82845F5121A1D6F00080B3E2 /* MenuCalender.swift */,
 				8204559C21249EE5002BA436 /* Post.swift */,
@@ -790,6 +793,7 @@
 				8204559D21249EE5002BA436 /* Post.swift in Sources */,
 				8205B507218781B200C54FF6 /* SelectMenuCell.swift in Sources */,
 				8208BCE42156A51D00BA6E28 /* CheckListCell.swift in Sources */,
+				8213CA7821A49EF20036FB02 /* KeepIngredientForBuy.swift in Sources */,
 				82C7095E21247F7D001D3548 /* LoginViewController.swift in Sources */,
 				82069B8A21998A6200B2DF4F /* MyMenuScreenCell.swift in Sources */,
 				82069B80219979DA00B2DF4F /* DinnerCell.swift in Sources */,

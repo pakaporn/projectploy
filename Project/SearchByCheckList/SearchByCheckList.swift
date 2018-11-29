@@ -22,11 +22,11 @@ class SearchByCheckList: UITableViewController, UISearchBarDelegate, UITextViewD
     var keepDataFilter = [Substring]()
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
-    var postData = [Menu]()
-    var currentPostData = [Menu]()
+    var postData = [Post]()
+    var currentPostData = [Post]()
     var ref: DatabaseReference?
-    let menuRef = Database.database().reference().child("menu")
-    var menu = [Menu]()
+    let menuRef = Database.database().reference().child("posts")
+    var menu = [Post]()
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -37,7 +37,7 @@ class SearchByCheckList: UITableViewController, UISearchBarDelegate, UITextViewD
             if self.currentPostData.count == 0 { //เช็คว่าถ้าไม่มีค่าใน currentPostData  จะโหลดข้อมูลจาก firebase
                 for child in snapshot.children {
                     let childSnapshot = child as! DataSnapshot
-                    let menufood = Menu(snapshot: childSnapshot)
+                    let menufood = Post(snapshot: childSnapshot)
                     self.menu.insert(menufood, at: 0)
                     self.keepDataFilter = []
                     for ingredient in self.menu[0].getIngredient().split(separator: " "){
@@ -55,12 +55,14 @@ class SearchByCheckList: UITableViewController, UISearchBarDelegate, UITextViewD
                 }
                 var keepF = [Int]()
                 var keepS = [Int]()
-                for index in 0...self.currentPostData.count-1 {
-                    for indexIn in 0...index{
-                        if index != indexIn {
-                            if self.currentPostData[index].getName() == self.currentPostData[indexIn].getName() {
-                                keepF.append(index)
-                                keepS.append(indexIn)
+                if self.currentPostData.count > 0 {
+                    for index in 0...self.currentPostData.count-1 {
+                        for indexIn in 0...index{
+                            if index != indexIn {
+                                if self.currentPostData[index].menu == self.currentPostData[indexIn].menu {
+                                    keepF.append(index)
+                                    keepS.append(indexIn)
+                                }
                             }
                         }
                     }
@@ -116,7 +118,7 @@ class SearchByCheckList: UITableViewController, UISearchBarDelegate, UITextViewD
         switch ind  {
         case selectedScope.name.rawValue:
             currentPostData = postData.filter({ (mod) -> Bool in
-                return mod.getName().lowercased().contains(text.lowercased())
+                return mod.menu.lowercased().contains(text.lowercased())
             })
             self.tableView.reloadData()
         default:
@@ -159,14 +161,16 @@ class SearchByCheckList: UITableViewController, UISearchBarDelegate, UITextViewD
         let iden = "SearchCheckList"
         if segue.identifier == iden {
             let searchCheckList = segue.destination as! SearchByCheckListDetail
-            let name = currentPostData[tableView.indexPathForSelectedRow!.row].getName()
+            let name = currentPostData[tableView.indexPathForSelectedRow!.row].menu
             let ingredient = currentPostData[tableView.indexPathForSelectedRow!.row].getIngredient()
             let method = currentPostData[tableView.indexPathForSelectedRow!.row].getMethod()
-            let category = currentPostData[tableView.indexPathForSelectedRow!.row].getCategory()
-            searchCheckList.menu = name
+            let category = currentPostData[tableView.indexPathForSelectedRow!.row].kindOFfood
+            let photoURL = currentPostData[tableView.indexPathForSelectedRow!.row].photoURL
+            searchCheckList.menu = name!
             searchCheckList.ingredient = ingredient
             searchCheckList.method = method
-            searchCheckList.keepCategory = category
+            searchCheckList.keepCategory = category!
+            searchCheckList.photoURL = photoURL!
         }
     }
 }

@@ -49,7 +49,6 @@ class DinnerScreen: UITableViewController, UISearchBarDelegate, UITextViewDelega
         //print(self.id)
         self.navigationController?.navigationBar.isHidden = false
         self.navigationItem.hidesBackButton = true
-        title = "Dinner of this day"
         self.tableView.estimatedRowHeight = 92.0
         self.tableView.rowHeight = UITableViewAutomaticDimension
         

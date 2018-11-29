@@ -17,6 +17,7 @@ class MenuFavoriteDetail: BaseMenuController, UIPickerViewDelegate, UIPickerView
     @IBOutlet var methodTextView: UITextView!
     @IBOutlet var imageView: UIImageView!
     @IBOutlet weak var category: UIPickerView!
+    @IBOutlet var calenderButton: UIButton!
     
     var ref: DatabaseReference?
     var databaseHandle: DatabaseHandle?
@@ -36,6 +37,7 @@ class MenuFavoriteDetail: BaseMenuController, UIPickerViewDelegate, UIPickerView
         methodTextView.text = method
         category.dataSource = self
         category.delegate = self
+        calenderButton.layer.cornerRadius = calenderButton.bounds.height/6
         ingredientTextView.layer.borderWidth = 2
         ingredientTextView.layer.borderColor = UIColor.gray.cgColor
         methodTextView.layer.borderWidth = 2

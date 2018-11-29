@@ -17,19 +17,29 @@ class SelectMenuCell: UITableViewCell {
     @IBOutlet weak var storyLabel: UILabel!
     var ref: DatabaseReference?
     
-    var menufood: Menu! {
+    var menufood: Post! {
         didSet {
-            storyLabel.text = menufood.text
+            storyLabel.text = menufood.menu
             likeButton.setTitle("😍 \(menufood.numberOfLikes)", for: [])
-            likeButton.layer.cornerRadius = likeButton.bounds.height/2
+            likeButton.layer.cornerRadius = likeButton.bounds.height/6
         }
     }
     
-    @IBAction func likeDidTouch(_ sender: AnyObject)
-    {
-        menufood.like()
-        likeButton.setTitle("😍 \(menufood.numberOfLikes)", for: [])
-        likeButton.setTitleColor(likeColor, for: [])
+    @IBAction func checkBoxAction(_ sender: Any) {
+        if ingredients![indexP!].checkedIngredient {
+            delegate?.checkBox(state: false, index: indexP)
+        } else {
+            delegate?.checkBox(state: true, index: indexP)
+        }
     }
+    
+    @IBOutlet weak var checkBoxOutlet: UIButton!
+    @IBOutlet weak var taskNameLabel: UILabel!
+    @IBOutlet var checkImage: UIImageView!
+    
+    var indexP: Int?
+    var delegate: CheckBox?
+    var ingredients: [KeepPost]?
+    
 }
 
